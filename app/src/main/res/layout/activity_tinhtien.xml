@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#d3d3d3"
+    tools:context=".activities.TinhtienActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbarThanhtoan"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Giỏ hàng"
+        app:titleTextColor="#FFF"
+        android:background="#FF8000"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarThanhtoan"
+        android:layout_marginBottom="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="15dp"
+                android:gravity="center_vertical"
+                android:text="Liên hệ"
+                android:textSize="15dp" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFF"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/txtHoTen"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:background="@android:color/transparent"
+                    android:text="Họ tên"
+                    android:textSize="20dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@android:color/darker_gray" />
+
+                <EditText
+                    android:id="@+id/txtSoDT"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:background="@android:color/transparent"
+                    android:text="Số điện thoại"
+                    android:textSize="20dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@android:color/darker_gray" />
+
+                <EditText
+                    android:id="@+id/txtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:background="@android:color/transparent"
+                    android:text="Email"
+                    android:textSize="20dp" />
+            </TableLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="15dp"
+                android:gravity="center_vertical"
+                android:text="Địa chỉ"
+                android:textSize="15dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFF"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/txtDiaChi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="15dp"
+                    android:background="@android:color/transparent"
+                    android:maxLines="2"
+                    android:text="Địa chỉ"
+                    android:textColor="@color/black"
+                    android:enabled="false"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <ImageView
+                    android:id="@+id/imgChonDiaChi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/baseline_arrow_forward_ios_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="15dp"
+                android:gravity="center_vertical"
+                android:text="Đơn hàng"
+                android:textSize="15dp" />
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFF"
+                android:orientation="vertical">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tổng tiền:"
+                        android:textColor="#212121"
+                        android:textSize="20dp" />
+                    <EditText
+                        android:id="@+id/txtTongTien1"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Tongtien"
+                        android:enabled="false"
+                        android:textColor="#FF8800"
+                        android:textSize="20dp" />
+                </TableRow>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@android:color/darker_gray" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ghi chú:"
+                        android:textColor="#212121"
+                        android:textSize="20dp" />
+
+                    <EditText
+                        android:id="@+id/txtGhiChu"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Lưu ý cho Người bán ..."
+                        android:maxLines="2"
+                        android:textSize="20dp" />
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@android:color/darker_gray" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ngày đặt:"
+                        android:textColor="#212121"
+                        android:textSize="20dp" />
+
+                    <EditText
+                        android:id="@+id/txtNgayDat"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Ngaydat"
+                        android:textColor="@color/black"
+                        android:enabled="false"
+                        android:textSize="20dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dự kiến"
+                        android:textColor="#d3d3d3"
+                        android:textSize="20dp" />
+
+                    <EditText
+                        android:id="@+id/txtNgayNhan"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Ngaynhan"
+                        android:enabled="false"
+                        android:textColor="#d3d3d3"
+                        android:textSize="20dp" />
+                </TableRow>
+            </TableLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="15dp"
+                android:gravity="center_vertical"
+                android:text="Hình thức thanh toán"
+                android:textSize="15dp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFF"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/txtHinhThucThanhToan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="15dp"
+                    android:background="@android:color/transparent"
+                    android:text="Hình thức thanh toán"
+                    android:textColor="@color/black"
+                    android:enabled="false"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/imgChonHinhThucTT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/baseline_arrow_forward_ios_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="15dp"
+                android:gravity="center_vertical"
+                android:text="Chi tiết thanh toán"
+                android:textSize="15dp" />
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFF"
+                android:orientation="vertical">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tổng tiền hàng:"
+                        android:textColor="#D3d3d3"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/txtTongTien2"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Tongtien"
+                        android:enabled="false"
+                        android:textColor="#d3d3d3"
+                        android:textSize="18dp" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tổng tiền vận chuyển:"
+                        android:textColor="#D3d3d3"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/txtTienVanChuyen"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@android:color/transparent"
+                        android:textColor="#D3d3d3"
+                        android:enabled="false"
+                        android:hint="Tien van chuyen"
+                        android:textSize="18dp" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Voucher giảm giá:"
+                        android:textColor="#D3d3d3"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/txtVoucher"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Voucher"
+                        android:textColor="#d3d3d3"
+                        android:enabled="false"
+                        android:textSize="18dp" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tổng thanh toán:"
+                        android:textColor="#212121"
+                        android:textSize="20dp" />
+
+                    <EditText
+                        android:id="@+id/txtTongTT"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Tongthanhtoan"
+                        android:enabled="false"
+                        android:textColor="#FF8800"
+                        android:textSize="20dp" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:background="#FFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Tổng thanh toán"
+            android:textSize="12dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/txtTongThanhToan" />
+        <TextView
+            android:id="@+id/txtTongThanhToan"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:hint="đ 0"
+            android:textColor="#FF8000"
+            android:textStyle="bold"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnDatHang" />
+
+        <Button
+            android:id="@+id/btnDatHang"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="#FF8000"
+            android:elevation="10dp"
+            android:text="  Đặt hàng  "
+            android:textColor="#FFF"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

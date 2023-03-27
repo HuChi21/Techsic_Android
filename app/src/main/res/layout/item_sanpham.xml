@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:elevation="10dp"
+    app:cardCornerRadius="15dp"
+    android:layout_margin="5dp">
+
+    <FrameLayout
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/itemsp_hinhanh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/baseline_image_24" />
+
+            <TextView
+                android:id="@+id/itemsp_tensp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:lines="2"
+                android:layout_marginEnd="10dp"
+                android:text="Tên sp"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/itemsp_giasp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:text="Giá"
+                android:textColor="#FF8800"
+                android:textSize="15dp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/itemsp_phanloai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:text="Phân loại"
+                android:elevation="10dp"
+                android:textAllCaps="true" />
+            <TextView
+                android:id="@+id/itemsp_phanloai2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:text="Phân loại"
+                android:elevation="10dp"
+                android:textAllCaps="true" />
+            <TextView
+                android:id="@+id/itemsp_thuonghieu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:text="Thương hiệu"
+                android:textAllCaps="true" />
+
+
+        </LinearLayout>
+    </FrameLayout>
+
+
+</androidx.cardview.widget.CardView>

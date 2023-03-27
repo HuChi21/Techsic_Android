@@ -1,18 +1,17 @@
 package com.example.techsic.models;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class SanPham implements Serializable {
+public class GioHang {
     int idsp;
     String tensp;
-    String thuonghieu;
     BigDecimal giasp;
     String hinhanh;
     String phanloai;
-    String thongso;
-    String mota;
-    int idloaisp;
+
+    int soluong;
+
+    public GioHang(){};
 
     public int getIdsp() {
         return idsp;
@@ -28,14 +27,6 @@ public class SanPham implements Serializable {
 
     public void setTensp(String tensp) {
         this.tensp = tensp;
-    }
-
-    public String getThuonghieu() {
-        return thuonghieu;
-    }
-
-    public void setThuonghieu(String thuonghieu) {
-        this.thuonghieu = thuonghieu;
     }
 
     public BigDecimal getGiasp() {
@@ -62,27 +53,11 @@ public class SanPham implements Serializable {
         this.phanloai = phanloai;
     }
 
-    public String getThongso() {
-        return thongso;
+    public int getSoluong() {
+        return soluong;
     }
 
-    public void setThongso(String thongso) {
-        this.thongso = thongso;
-    }
-
-    public String getMota() {
-        return mota;
-    }
-
-    public void setMota(String mota) {
-        this.mota = mota;
-    }
-
-    public int getIdloaisp() {
-        return idloaisp;
-    }
-
-    public void setIdloaisp(int idloaisp) {
-        this.idloaisp = idloaisp;
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
     }
 }

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="130dp"
+            android:id="@+id/itemchonsl_imgHinhanh"
+            android:layout_margin="10dp"
+            />
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemchonsl_txtGia"
+                android:text="Giá"
+                android:textStyle="bold"
+                android:layout_gravity="bottom|left"
+                android:textSize="18dp"
+                android:textColor="#FF8000"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemchonsl_txtGiaKM"
+                android:text="khuyenmai"
+                android:layout_marginVertical="10dp"
+                android:layout_gravity="bottom|left"
+                android:layout_marginStart="5dp"
+                android:textSize="15dp"
+                android:textColor="#D3D3D3"
+                />
+        </TableLayout>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Phân loại"
+            android:gravity="center|left"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:id="@+id/itemchonsl_txtPhanloai"
+            android:text="phanloai"
+            android:gravity="center|left"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:weightSum="4">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="Số lượng"
+            android:gravity="center|left"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/spinner"
+            android:layout_weight="1" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/itemchonsl_btnBuy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:backgroundTint="#FF8000"
+        android:elevation="10dp"
+        android:text="Mua ngay"
+        android:textColor="#FFF"
+        android:textSize="10dp" />
+</LinearLayout>

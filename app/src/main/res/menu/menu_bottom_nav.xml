@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/itemHome"
+        android:id="@+id/menuHome"
         android:icon="@drawable/baseline_home_24"
         android:title="Home"/>
     <item
-        android:id="@+id/itemDienthoai"
+        android:id="@+id/menuDienthoai"
         android:icon="@drawable/baseline_phone_android_24"
         android:title="Điện thoại"/>
     <item
-        android:id="@+id/itemLaptop"
+        android:id="@+id/menuLaptop"
         android:icon="@drawable/baseline_laptop_24"
         android:title="Laptop"/>
     <item
-        android:id="@+id/itemTablet"
+        android:id="@+id/menuTablet"
         android:icon="@drawable/baseline_tablet_mac_24"
         android:title="Tablet"/>
     <item
-        android:id="@+id/itemProfile"
-        android:icon="@drawable/baseline_person_outline_24"
+        android:id="@+id/menuProfile"
+        android:icon="@drawable/baseline_account_circle_24"
         android:title="User"/>
 </menu>

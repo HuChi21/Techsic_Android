@@ -8,14 +8,14 @@
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/item_imageloaisp"
+        android:id="@+id/itemloaisp_imageloaisp"
         android:src="@drawable/baseline_image_24"
         android:layout_marginTop="10dp"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/item_tenloaisp"
+        android:id="@+id/itemloaisp_tenloaisp"
         android:text="Điện thoại"
         android:textSize="15dp"
         android:paddingLeft="10dp"

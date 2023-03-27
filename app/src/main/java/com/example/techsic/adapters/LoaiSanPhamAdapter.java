@@ -14,12 +14,12 @@ import com.example.techsic.models.LoaiSP;
 
 import java.util.List;
 
-public class LoaiSPAdapter extends BaseAdapter {
+public class LoaiSanPhamAdapter extends BaseAdapter {
 
     List<LoaiSP> array;
     Context context;
 
-    public LoaiSPAdapter( Context context,List<LoaiSP> array) {
+    public LoaiSanPhamAdapter(Context context, List<LoaiSP> array) {
         this.array = array;
         this.context = context;
     }
@@ -51,8 +51,8 @@ public class LoaiSPAdapter extends BaseAdapter {
              viewHolder = new ViewHolder();
              LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
              convertView = layoutInflater.inflate(R.layout.item_loaisanpham,null);
-             viewHolder.textLoaiSP = convertView.findViewById(R.id.item_tenloaisp);
-             viewHolder.imgHinhAnh = convertView.findViewById(R.id.item_imageloaisp);
+             viewHolder.textLoaiSP = convertView.findViewById(R.id.itemloaisp_tenloaisp);
+             viewHolder.imgHinhAnh = convertView.findViewById(R.id.itemloaisp_imageloaisp);
              convertView.setTag(viewHolder);
          }else{
              viewHolder =(ViewHolder) convertView.getTag();

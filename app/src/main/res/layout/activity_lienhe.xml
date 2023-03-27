@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.LienheActivity">
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/drawerLayout"
+        android:background="#D3D3D3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:id="@+id/toolBarLienHe"
+                app:title="Liên hệ"
+                android:layout_alignParentTop="true"
+                app:titleTextColor="#FFF"
+                android:background="#FF8000"
+                />
+        </LinearLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/navigationView"
+            android:layout_gravity="start"
+            app:menu="@menu/menu_nav"
+            app:itemIconTint="#FF8000"
+            app:itemTextColor="#FF8000"
+            />
+    </androidx.drawerlayout.widget.DrawerLayout>
+</RelativeLayout>

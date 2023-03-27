@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity"
     >
-
     <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,66 +17,54 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-                <androidx.appcompat.widget.Toolbar
-                    android:layout_width="match_parent"
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:id="@+id/toolBarTrangChu"
+                app:title="Trang chủ"
+                android:layout_alignParentTop="true"
+                app:titleTextColor="#FFF"
+                android:background="#FF8000"
+                >
+                <FrameLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="?attr/actionBarSize"
-                    android:id="@+id/toolBarTrangChu"
-                    app:title="Trang chủ"
-                    app:titleTextColor="#FFF"
-                    android:background="#FF8000">
-                </androidx.appcompat.widget.Toolbar>
-
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:layout_editor_absoluteX="1dp"
-                    tools:layout_editor_absoluteY="1dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:background="#FFF"
-                        >
-                        <ViewFlipper
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:id="@+id/viewFlipper"
-                            android:layout_marginHorizontal="10dp">
-                        </ViewFlipper>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Sản phẩm mới nhất"
-                            android:textSize="20dp"
-                            android:layout_marginStart="10dp"
-                            android:paddingTop="5dp"
-                            android:textStyle="bold"
-                            android:textColor="#FF8000"
-                            />
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/recyclerView"
-                            android:layout_margin="10dp">
-                        </androidx.recyclerview.widget.RecyclerView>
-                    </LinearLayout>
-                </ScrollView>
+                    android:id="@+id/frameCart"
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="10dp">
+                    <com.nex3z.notificationbadge.NotificationBadge
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:id="@+id/notifSoLuong"
+                        android:layout_gravity="top|right"
+                        />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imgShopCart"
+                        android:src="@drawable/baseline_shopping_cart_fff"
+                        android:layout_gravity="bottom"
+                        android:layout_marginRight="10dp"
+                        />
+                </FrameLayout>
+            </androidx.appcompat.widget.Toolbar>
+            <androidx.viewpager.widget.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewPager"
+                android:layout_above="@+id/bottom_nav"
+                android:contentDescription="Its just the ViewPagerDescription"
+                android:hint="e.g 5"/>
         </LinearLayout>
         <com.google.android.material.navigation.NavigationView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/navigationView"
-            android:layout_gravity="start">
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/listViewTrangChu"
-                android:layout_marginTop="10dp">
-
-            </ListView>
-        </com.google.android.material.navigation.NavigationView>
-
+            android:layout_gravity="start"
+            app:menu="@menu/menu_nav"
+            app:itemIconTint="#FF8000"
+            app:itemTextColor="#FF8000"
+            />
 
     </androidx.drawerlayout.widget.DrawerLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -88,8 +75,8 @@
         app:menu="@menu/menu_bottom_nav"
         app:itemBackground="@color/white"
         app:itemIconTint="@color/selected_item_color"
-        app:itemTextColor="@color/selected_item_color"
-        >
+        app:itemTextColor="@color/selected_item_color">
+
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 </RelativeLayout>

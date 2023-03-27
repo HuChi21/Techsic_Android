@@ -1,5 +1,10 @@
 package com.example.techsic.retrofit;
 
+import com.example.techsic.models.GioHang;
+import com.example.techsic.models.TaiKhoan;
+
+import java.util.List;
+
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -16,5 +21,9 @@ public class RetrofitUtilities {
         }
         return retrofit;
     }
+
+    public static List<GioHang> giohanglist;
+    public static TaiKhoan taiKhoanGanDay = new TaiKhoan();
+
 
 }
