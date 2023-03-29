@@ -52,9 +52,7 @@
                 android:layout_marginTop="30dp"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:maxLines="1"
-
-                />
+                android:maxLines="1"/>
 
             <EditText
                 android:id="@+id/edtMatKhauDangNhap"
@@ -63,13 +61,21 @@
                 android:hint="Mật khẩu"
                 android:inputType="textPassword"
                 android:maxLines="1" />
-
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chkNhoTaiKhoan"
+                android:layout_marginTop="10dp"
+                android:checked="true"
+                android:text="Nhớ tài khoản"
+                android:textSize="15dp"
+                />
             <Button
                 android:id="@+id/btnDangNhap"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:background="#FF8800"
                 android:elevation="10dp"
                 android:text="Đăng Nhập"

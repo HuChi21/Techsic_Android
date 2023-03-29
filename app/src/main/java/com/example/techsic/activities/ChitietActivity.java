@@ -217,6 +217,7 @@ public class ChitietActivity extends AppCompatActivity {
                 dialog.dismiss();
                 Intent intent = new Intent(getApplicationContext(),TinhtienActivity.class);
                 intent.putExtra("txtTongTien", tongtt);
+                intent.putExtra("txtSoLuong", soluong);
                 startActivity(intent);
                 finish();
             }

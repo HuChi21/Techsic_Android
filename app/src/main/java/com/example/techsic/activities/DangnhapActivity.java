@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import com.example.techsic.R;
 import com.example.techsic.retrofit.RetrofitInterface;
 import com.example.techsic.retrofit.RetrofitUtilities;
 
+import io.paperdb.Paper;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -26,9 +28,10 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
     private TextView txtDangky,txtQuenmk;
     private Button btnDangnhap;
     private ProgressBar progressBarDangnhap;
+    private CheckBox chkNhotaikhoan;
+    private boolean isLogin = false;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     RetrofitInterface apibanhang;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +49,18 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
         txtQuenmk = (TextView) findViewById(R.id.txtQuenMK);
         btnDangnhap = (Button) findViewById(R.id.btnDangNhap);
         progressBarDangnhap = (ProgressBar) findViewById(R.id.progressBarDangNhap);
+        chkNhotaikhoan = (CheckBox) findViewById(R.id.chkNhoTaiKhoan);
 
         btnDangnhap.setOnClickListener(this);
         txtDangky.setOnClickListener(this);
         txtQuenmk.setOnClickListener(this);
+
+        Paper.init(this);
+
+        if(Paper.book().read("email") != null && Paper.book().read("matkhau")!=null){
+            edtEmail.setText(Paper.book().read("email"));
+            edtMatkhau.setText(Paper.book().read("matkhau"));
+        }
     }
 
     @Override
@@ -71,60 +82,70 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
         String email = edtEmail.getText().toString().trim();
         String matkhau = edtMatkhau.getText().toString().trim();
 
-        if(email.equals("admin") && matkhau.equals("")){
-            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        if (email.equals("admin") && matkhau.equals("")) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();
             return;
         }
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             edtEmail.setError("Nhập địa chỉ Email hợp lệ!");
             edtEmail.requestFocus();
             return;
-        }else if(email.isEmpty()){
+        } else if (email.isEmpty()) {
             edtEmail.setError("Nhập địa chỉ email!");
             edtEmail.requestFocus();
             return;
         }
-        if(matkhau.isEmpty()){
+        if (matkhau.isEmpty()) {
             edtMatkhau.setError("Nhập mật khẩu");
             edtMatkhau.requestFocus();
             return;
         }
-        compositeDisposable.add(apibanhang.setDangNhap(email,matkhau)
+
+        if (chkNhotaikhoan.isChecked()) {
+            Paper.book().write("email", email);
+            Paper.book().write("matkhau", matkhau);
+        } else {
+            Paper.book().write("email", "");
+            Paper.book().write("matkhau", "");
+        }
+
+
+        compositeDisposable.add(apibanhang.setDangNhap(email, matkhau)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         taiKhoanModel -> {
-                            if(taiKhoanModel.isSuccess()){
+                            if (taiKhoanModel.isSuccess()) {
                                 progressBarDangnhap.setVisibility(View.VISIBLE);
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
                                         Toast.makeText(getApplicationContext(), taiKhoanModel.getMessage(), Toast.LENGTH_SHORT).show();
                                         RetrofitUtilities.taiKhoanGanDay = taiKhoanModel.getResult().get(0);
-                                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         startActivity(intent);
                                         finish();
                                     }
-                                },2000);
-                            }else{
+                                }, 2000);
+                            } else {
                                 progressBarDangnhap.setVisibility(View.VISIBLE);
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(getApplicationContext(),taiKhoanModel.getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), taiKhoanModel.getMessage(), Toast.LENGTH_SHORT).show();
                                         progressBarDangnhap.setVisibility(View.INVISIBLE);
                                     }
-                                },2000);
+                                }, 2000);
                             }
                         },
                         throwable -> {
-                            Toast.makeText(getApplicationContext(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Không kết nối được với server " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                 ));
-
     }
+
     private void actionQuenMK() {
         String email = edtEmail.getText().toString().trim();
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {

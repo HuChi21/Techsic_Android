@@ -84,7 +84,6 @@ public class GiohangActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),TinhtienActivity.class);
                 intent.putExtra("txtTongTien", tongtt);
                 startActivity(intent);
-                finish();
             }
         });
     }
@@ -103,14 +102,14 @@ public class GiohangActivity extends AppCompatActivity {
         giohangRecyclerview.setLayoutManager(layoutManager);
         if(RetrofitUtilities.giohanglist.size() == 0){
             txtGiohangtrong.setVisibility(View.VISIBLE);
-//            txtGiohangtrong.setPaintFlags(txtGiohangtrong.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-//            txtGiohangtrong.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-//                    startActivity(intent);
-//                }
-//            });
+            btnBuy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
         }else{
             gioHangAdapter = new GioHangAdapter(getApplicationContext(),RetrofitUtilities.giohanglist);
             giohangRecyclerview.setAdapter(gioHangAdapter);

@@ -53,4 +53,20 @@ public interface RetrofitInterface {
     Observable<TaiKhoanModel> setResetMK(
             @Field("email") String email
     );
+
+    @POST("donhang.php")
+    @FormUrlEncoded
+    Observable<TaiKhoanModel> setDonHang(
+            @Field("idtaikhoan") int idtaikhoan,
+            @Field("hoten") String hoten,
+            @Field("sodt") String sodt,
+            @Field("email") String email,
+            @Field("diachi") String diachi,
+            @Field("ghichu") String ghichu,
+            @Field("ngaydat") String ngaydat,
+            @Field("ngaynhan") String ngaynhan,
+            @Field("soluong") int soluong,
+            @Field("tongthanhtoan") String tongthanhtoan,
+            @Field("chitiet") String chitiet
+    );
 }

@@ -8,7 +8,6 @@ public class GioHang {
     BigDecimal giasp;
     String hinhanh;
     String phanloai;
-
     int soluong;
 
     public GioHang(){};
