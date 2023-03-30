@@ -74,7 +74,7 @@ public class HomeFragment extends Fragment {
                             }
                         },
                         throwable -> {
-                            Toast.makeText(getContext(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                 ));
 
@@ -95,8 +95,8 @@ public class HomeFragment extends Fragment {
         }
         viewFlipper.setFlipInterval(3000);
         viewFlipper.setAutoStart(true);
-        Animation slide_in = AnimationUtils.loadAnimation(getContext(),R.anim.slide_right_in);
-        Animation slide_out  = AnimationUtils.loadAnimation(getContext(),R.anim.slide_right_out);
+        Animation slide_in = AnimationUtils.loadAnimation(getContext(),R.anim.slide_in);
+        Animation slide_out  = AnimationUtils.loadAnimation(getContext(),R.anim.slide_out);
         viewFlipper.setInAnimation(slide_in);
         viewFlipper.setOutAnimation(slide_out);
     }

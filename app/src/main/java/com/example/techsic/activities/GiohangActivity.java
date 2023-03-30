@@ -1,15 +1,15 @@
 package com.example.techsic.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
@@ -30,8 +30,9 @@ import java.util.List;
 
 public class GiohangActivity extends AppCompatActivity {
     //private ImageView imgHinhanh; //imgAdd,imgRemove
-    private TextView txtTongthanhtoan,txtGiohangtrong; //txtTensp,txtPhanloai,txtGia,txtGiakm,txtSoLuong,
+    private TextView txtTongthanhtoan; //txtTensp,txtPhanloai,txtGia,txtGiakm,txtSoLuong,
     private RecyclerView giohangRecyclerview;
+    private ConstraintLayout layoutGiohangtrong;
     private Button btnBuy;
     private Toolbar toolbarGioHang;
 
@@ -43,6 +44,7 @@ public class GiohangActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giohang);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWidget();
         actionGioHang();
         actionTongThanhToan();
@@ -101,15 +103,18 @@ public class GiohangActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         giohangRecyclerview.setLayoutManager(layoutManager);
         if(RetrofitUtilities.giohanglist.size() == 0){
-            txtGiohangtrong.setVisibility(View.VISIBLE);
-            btnBuy.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            });
+            layoutGiohangtrong.setVisibility(View.VISIBLE);
+            btnBuy.setAlpha(.5f);
+            btnBuy.setEnabled(false);
+//            btnBuy.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+//                    startActivity(intent);
+//                    overridePendingTransition(R.anim.slide_in, R.anim.nothing);
+//                    finish();
+//                }
+//            });
         }else{
             gioHangAdapter = new GioHangAdapter(getApplicationContext(),RetrofitUtilities.giohanglist);
             giohangRecyclerview.setAdapter(gioHangAdapter);
@@ -117,7 +122,7 @@ public class GiohangActivity extends AppCompatActivity {
     }
 
     private void getWidget() {
-        txtGiohangtrong = (TextView) findViewById(R.id.txtGioHangTrong);
+        layoutGiohangtrong = (ConstraintLayout) findViewById(R.id.layoutGioHangTrong);
         txtTongthanhtoan = (TextView) findViewById(R.id.txtTongThanhToan);
         giohangRecyclerview = (RecyclerView) findViewById(R.id.gioHangRecyclerView);
         btnBuy = (Button) findViewById(R.id.btnBuy);

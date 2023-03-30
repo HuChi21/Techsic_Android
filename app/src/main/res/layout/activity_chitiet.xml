@@ -81,8 +81,8 @@
                         android:text="Tên sản phẩm:"
                         android:layout_gravity="center"
                         android:layout_marginLeft="10dp"
-                        android:textSize="25dp"
-                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
                         android:maxLines="2"
                         />
                 </TableRow>
@@ -101,19 +101,18 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/txtGia"
                         android:text="Giá"
-                        android:textStyle="bold"
                         android:gravity="center|left"
-                        android:textSize="25dp"
+                        android:textSize="20dp"
                         android:textColor="#FF8000"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/txtGiaKM"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginStart="10dp"
                         android:text="khuyenmai"
                         android:gravity="center|left"
-                        android:textSize="20dp"
+                        android:textSize="18dp"
                         android:textColor="#D3D3D3"
                         />
                 </TableRow>
@@ -123,26 +122,26 @@
                 android:orientation="horizontal"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="5dp"
-                android:weightSum="3">
+                android:weightSum="10">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="3"
                     android:text="Thương hiệu"
                     android:gravity="center|left"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:id="@+id/txtThuonghieu"
-                    android:text="thuonghieu"
-                    android:gravity="center|left"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
+                    android:hint="thuonghieu"
+                    android:gravity="center"
+                    android:textSize="15dp"
                     android:textAllCaps="true"
                     />
             </TableRow>
@@ -152,16 +151,17 @@
                 android:orientation="horizontal"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="5dp"
-                android:weightSum="3">
+                android:weightSum="10">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="3"
                     android:text="Phân loại"
+                    android:textColor="@color/black"
                     android:gravity="center|left"
                     android:textStyle="bold"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     />
                 <TextView
                     android:layout_width="0dp"
@@ -169,9 +169,9 @@
                     android:layout_weight="2"
                     android:id="@+id/txtPhanloai"
                     android:text="phanloai"
-                    android:gravity="center|left"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="@drawable/corner_button2"
+                    android:textSize="15dp"
                     />
             </TableRow>
             <TableLayout
@@ -187,13 +187,14 @@
                     android:text="Thông số"
                     android:textStyle="bold"
                     android:gravity="center|left"
-                    android:textSize="18dp"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/txtThongso"
-                    android:text="Thông số"
+                    android:hint="Thông số"
                     android:layout_marginTop="10dp"
                     android:gravity="center|left"
                     android:textSize="15dp"
@@ -207,14 +208,15 @@
                 android:layout_marginVertical="5dp"
                 android:text="Mô tả:"
                 android:gravity="center|left"
-                android:textSize="18dp"
+                android:textColor="@color/black"
+                android:textSize="16dp"
                 android:textStyle="bold"
                 />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtMota"
-                android:text="Mô tả"
+                android:hint="Mô tả"
                 android:gravity="center|left"
                 android:textSize="15dp"
                 android:layout_marginHorizontal="10dp"

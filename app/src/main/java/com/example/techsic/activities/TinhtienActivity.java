@@ -1,19 +1,25 @@
 package com.example.techsic.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.techsic.R;
+import com.example.techsic.adapters.ChiTietDonHangAdapter;
+import com.example.techsic.adapters.GioHangAdapter;
 import com.example.techsic.retrofit.RetrofitInterface;
 import com.example.techsic.retrofit.RetrofitUtilities;
 import com.google.gson.Gson;
@@ -38,30 +44,30 @@ public class TinhtienActivity extends AppCompatActivity {
     private ImageView imgDiachi,imgHinhthuc;
     private Button btnDathang;
     private androidx.appcompat.widget.Toolbar toolbar;
+    private ProgressBar progressbarTinhtien;
     private NumberFormat format;
     private int random,tongItem,soluong;
     private long tongtien, tongthanhtoan;
     RetrofitInterface apibanhang;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private RecyclerView sanphamRecyclerview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tinhtien);
         apibanhang = RetrofitUtilities.getRetrofit(RetrofitInterface.BASE_URL).create(RetrofitInterface.class);
-
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWidget();
         countItem();
+        getGioHang();
         actionTinhTien();
     }
 
     private void countItem() {
-        tongItem = 0;
         soluong = getIntent().getIntExtra("txtSoLuong",0);
-        if(tongItem ==0 ){
-            tongItem = soluong;
-        }
-        else {
+        tongItem = soluong;
+        if(tongItem == 0){
             for (int i = 0; i < RetrofitUtilities.giohanglist.size(); i++) {
                 tongItem += RetrofitUtilities.giohanglist.get(i).getSoluong();
             }
@@ -88,6 +94,10 @@ public class TinhtienActivity extends AppCompatActivity {
         btnDathang = (Button) findViewById(R.id.btnDatHang);
 
         toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbarThanhtoan);
+        progressbarTinhtien = (ProgressBar) findViewById(R.id.progressBarTinhTien);
+        sanphamRecyclerview = (RecyclerView) findViewById(R.id.sanphamRecyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        sanphamRecyclerview.setLayoutManager(layoutManager);
 
         format = NumberFormat.getCurrencyInstance();
         format.setMaximumFractionDigits(0);
@@ -172,7 +182,7 @@ public class TinhtienActivity extends AppCompatActivity {
                     txtDiachi.setEnabled(true);
                     return;
                 }
-                if (hinhthuc.equals("Hình thức thanh toán")) {
+                if (hinhthuc.equals("Hình thức thanh ")) {
                     txtHinhthuc.setError("Vui lòng chọn hình thức thanh toán!");
                     txtHinhthuc.setEnabled(true);
                     return;
@@ -183,10 +193,20 @@ public class TinhtienActivity extends AppCompatActivity {
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
                                 taiKhoanModel -> {
-                                        Toast.makeText(getApplicationContext(), "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                                        startActivity(intent);
-                                        finish();
+                                    progressbarTinhtien.setVisibility(View.VISIBLE);
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            progressbarTinhtien.setVisibility(View.GONE);
+                                            Toast.makeText(getApplicationContext(), "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                                            startActivity(intent);
+                                            RetrofitUtilities.giohanglist.clear();
+                                            overridePendingTransition(R.anim.nothing, R.anim.slide_out);
+                                            finish();
+                                        }
+                                    },1500);
+
                                 },
                                 throwable -> {
                                     Toast.makeText(getApplicationContext(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
@@ -195,6 +215,15 @@ public class TinhtienActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void getGioHang() {
+        sanphamRecyclerview.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        sanphamRecyclerview.setLayoutManager(layoutManager);
+        GioHangAdapter gioHangAdapter = new GioHangAdapter(getApplicationContext(),RetrofitUtilities.giohanglist);
+        sanphamRecyclerview.setAdapter(gioHangAdapter);
+
     }
 
     @Override

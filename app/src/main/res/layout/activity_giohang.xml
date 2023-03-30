@@ -6,19 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".activities.GiohangActivity">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutGioHangTrong"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/txtGioHangTrong"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center"
-        android:text="Giỏ hàng trống :&lt;"
-        android:textSize="20dp"
-        android:textStyle="italic"
-        android:textColor="#FF8800"
-        android:visibility="gone"
-        />
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="    Giỏ hàng trống :&lt;"
+            android:textColor="#FF8800"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="300dp"
+            android:src="@drawable/img_giohangtrong"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"

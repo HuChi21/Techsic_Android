@@ -59,7 +59,6 @@ public class SanphamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             myViewHolder.txtGia.setText(format.format(sanPham.getGiasp()));
             myViewHolder.txtThuonghieu.setText(sanPham.getThuonghieu());
             myViewHolder.txtPhanLoai.setText(sanPham.getPhanloai());
-            myViewHolder.txtPhanLoai2.setText(sanPham.getPhanloai());
             Glide.with(context).load(sanPham.getHinhanh()).into(myViewHolder.imgHinhanh);
 
             myViewHolder.setItemClickListener(new ItemClickListener() {
@@ -103,14 +102,13 @@ public class SanphamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView imgHinhanh;
-        private TextView txtTen,txtGia,txtThuonghieu, txtPhanLoai,txtPhanLoai2 ;
+        private TextView txtTen,txtGia,txtThuonghieu, txtPhanLoai ;
         private ItemClickListener itemClickListener;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTen = (TextView) itemView.findViewById(R.id.itemsp_tensp);
             txtGia = (TextView) itemView.findViewById(R.id.itemsp_giasp);
             txtPhanLoai = (TextView) itemView.findViewById(R.id.itemsp_phanloai);
-            txtPhanLoai2 = (TextView) itemView.findViewById(R.id.itemsp_phanloai2);
             txtThuonghieu = (TextView) itemView.findViewById(R.id.itemsp_thuonghieu);
             imgHinhanh = (ImageView) itemView.findViewById(R.id.itemsp_hinhanh);
 

@@ -2,16 +2,17 @@ package com.example.techsic.models;
 
 import java.math.BigDecimal;
 
-public class GioHang {
+public class Item {
     int idsp;
     String tensp;
-    BigDecimal giasp;
     String hinhanh;
+    BigDecimal giasp;
     String phanloai;
     String thuonghieu;
-    int soluong;
+    String soluong;
 
-    public GioHang(){};
+    public Item() {
+    }
 
     public int getIdsp() {
         return idsp;
@@ -29,20 +30,20 @@ public class GioHang {
         this.tensp = tensp;
     }
 
-    public BigDecimal getGiasp() {
-        return giasp;
-    }
-
-    public void setGiasp(BigDecimal giasp) {
-        this.giasp = giasp;
-    }
-
     public String getHinhanh() {
         return hinhanh;
     }
 
     public void setHinhanh(String hinhanh) {
         this.hinhanh = hinhanh;
+    }
+
+    public BigDecimal getGiasp() {
+        return giasp;
+    }
+
+    public void setGiasp(BigDecimal giasp) {
+        this.giasp = giasp;
     }
 
     public String getPhanloai() {
@@ -61,11 +62,11 @@ public class GioHang {
         this.thuonghieu = thuonghieu;
     }
 
-    public int getSoluong() {
+    public String getSoluong() {
         return soluong;
     }
 
-    public void setSoluong(int soluong) {
+    public void setSoluong(String soluong) {
         this.soluong = soluong;
     }
 }

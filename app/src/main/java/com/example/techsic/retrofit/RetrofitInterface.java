@@ -1,6 +1,7 @@
 package com.example.techsic.retrofit;
 
 import com.bumptech.glide.disklrucache.DiskLruCache;
+import com.example.techsic.models.DonHangModel;
 import com.example.techsic.models.LoaiSPModel;
 import com.example.techsic.models.SanPhamModel;
 import com.example.techsic.models.TaiKhoan;
@@ -13,8 +14,8 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface RetrofitInterface {
-    //public static final String BASE_URL="http://192.168.83.189/techsic/" ;
-    public static final String BASE_URL="http://192.168.22.109:8080/techsic/" ;
+//    public static final String BASE_URL="http://192.168.83.191/techsic/" ;
+   public static final String BASE_URL="http://192.168.22.109:8080/techsic/" ;
 
     @GET("getloaisp.php")
     Observable<LoaiSPModel> getLoaiSP();
@@ -67,6 +68,12 @@ public interface RetrofitInterface {
             @Field("ngaynhan") String ngaynhan,
             @Field("soluong") int soluong,
             @Field("tongthanhtoan") String tongthanhtoan,
-            @Field("chitiet") String chitiet
+            @Field("item") String item
+    );
+
+    @POST("xemdonhang.php")
+    @FormUrlEncoded
+    Observable<DonHangModel> getDonHang(
+            @Field("idtaikhoan") int idtaikhoan
     );
 }

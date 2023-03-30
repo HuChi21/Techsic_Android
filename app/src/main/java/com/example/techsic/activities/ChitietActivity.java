@@ -49,7 +49,7 @@ public class ChitietActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chitiet);
-
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWidget();
         getThongTin();
     }
@@ -98,6 +98,7 @@ public class ChitietActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),GiohangActivity.class);
+                overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                 startActivity(intent);
             }
         });
@@ -110,6 +111,7 @@ public class ChitietActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                overridePendingTransition(R.anim.nothing, R.anim.slide_out);
             }
         });
 
@@ -201,6 +203,7 @@ public class ChitietActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent intent = new Intent(getApplicationContext(),GiohangActivity.class);
                         startActivity(intent);
+                        overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                     }
                 });
             }
@@ -219,6 +222,7 @@ public class ChitietActivity extends AppCompatActivity {
                 intent.putExtra("txtTongTien", tongtt);
                 intent.putExtra("txtSoLuong", soluong);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                 finish();
             }
         });
@@ -245,6 +249,7 @@ public class ChitietActivity extends AppCompatActivity {
                 gioHang.setGiasp(sanPham.getGiasp());
                 gioHang.setSoluong(soluong);
                 gioHang.setPhanloai(sanPham.getPhanloai());
+                gioHang.setThuonghieu(sanPham.getThuonghieu());
                 RetrofitUtilities.giohanglist.add(gioHang);
             }
         }else{
@@ -257,6 +262,7 @@ public class ChitietActivity extends AppCompatActivity {
             gioHang.setGiasp(sanPham.getGiasp());
             gioHang.setSoluong(soluong);
             gioHang.setPhanloai(sanPham.getPhanloai());
+            gioHang.setThuonghieu(sanPham.getThuonghieu());
             RetrofitUtilities.giohanglist.add(gioHang);
         }
         int tongItem = 0;

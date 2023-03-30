@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
@@ -125,11 +124,11 @@ public class DienThoaiFragment extends Fragment {
                                 }
                             }
                             else{
-                                Toast.makeText(getContext(), "Không còn dữ liệu!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Không còn dữ liệu!", Toast.LENGTH_SHORT).show();
                             }
                         },
                         throwable -> {
-                            Toast.makeText(getContext(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                 ));
     }

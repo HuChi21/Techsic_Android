@@ -9,72 +9,83 @@
 
     <FrameLayout
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="10dp">
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
+
             <ImageView
-                android:layout_width="match_parent"
+                android:id="@+id/iconnew"
+                android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:elevation="20dp"
                 android:src="@drawable/iconnew"
-                android:paddingStart="150dp"
-                />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <LinearLayout
+                android:id="@+id/layout1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:weightSum="1">
+                android:weightSum="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+               >
 
                 <ImageView
                     android:id="@+id/itemsp_hinhanh"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginTop="30dp"
+                    android:elevation="10dp"
                     android:src="@drawable/baseline_image_24" />
 
                 <TextView
                     android:id="@+id/itemsp_tensp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center|left"
-                    android:layout_marginEnd="10dp"
+                    android:gravity="left|bottom"
                     android:lines="2"
-                    android:text="Tên sp"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:layout_marginEnd="10dp"
+                    android:hint="Tên sp"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"/>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/itemsp_thuonghieu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="Thương hiệu"
+                        android:background="@drawable/corner_button2"
+                        android:textSize="12dp"
+                        android:textAllCaps="true" />
+                    <TextView
+                        android:id="@+id/itemsp_phanloai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center"
+                        android:hint="Phân loại loại"
+                        android:background="@drawable/corner_button2"
+                        android:textSize="12dp"
+                        android:textAllCaps="true" />
+                </TableRow>
 
                 <TextView
                     android:id="@+id/itemsp_giasp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center|left"
-                    android:text="Giá"
-                    android:textColor="#FF8000"
-                    android:textSize="15dp"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:id="@+id/itemsp_phanloai"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center|left"
-                    android:text="Phân loại"
-                    android:elevation="10dp"
-                    android:textAllCaps="true" />
-                <TextView
-                    android:id="@+id/itemsp_thuonghieu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center|left"
-                    android:text="Thương hiệu"
-                    android:textAllCaps="true" />
-
+                    android:hint="Giá"
+                    android:textColor="#FF8800"
+                    android:textSize="20dp" />
             </LinearLayout>
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
 

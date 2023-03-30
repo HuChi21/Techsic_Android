@@ -128,10 +128,12 @@ public class LaptopFragment extends Fragment {
                                     }
                                     sanphamAdapter.notifyItemRangeChanged(position,loadMoreNum);
                                 }
+                            } else{
+                                Toast.makeText(getActivity(), "Không còn dữ liệu!", Toast.LENGTH_SHORT).show();
                             }
                         },
                         throwable -> {
-                            Toast.makeText(getContext(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                 ));
     }

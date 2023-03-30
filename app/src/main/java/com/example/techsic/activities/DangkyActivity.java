@@ -14,6 +14,7 @@ import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -47,7 +48,7 @@ public class DangkyActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dangky);
         apibanhang = RetrofitUtilities.getRetrofit(RetrofitInterface.BASE_URL).create(RetrofitInterface.class);
-
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWidget();
 
     }
@@ -108,7 +109,9 @@ public class DangkyActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.txtDangNhap:
-                onBackPressed();
+                finish();
+                overridePendingTransition(R.anim.nothing, R.anim.slide_out);
+
                 break;
             case R.id.btnDangKy:
                 actionDangKy();
@@ -191,7 +194,7 @@ public class DangkyActivity extends AppCompatActivity implements View.OnClickLis
                                         startActivity(intent);
                                         finish();
                                     }
-                                },2000);
+                                },1500);
 
                             }else{
                                 progressBarDangky.setVisibility(View.VISIBLE);
@@ -201,7 +204,7 @@ public class DangkyActivity extends AppCompatActivity implements View.OnClickLis
                                         Toast.makeText(getApplicationContext(), taiKhoanModel.getMessage(), Toast.LENGTH_SHORT).show();
                                         progressBarDangky.setVisibility(View.GONE);
                                     }
-                                },2000);
+                                },1500);
 
                             }
                         },

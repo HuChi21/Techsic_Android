@@ -18,6 +18,7 @@
             android:layout_height="match_parent"
             android:layout_weight="4"
             android:layout_gravity="center_horizontal"
+            android:paddingHorizontal="5dp"
             android:id="@+id/itemgh_imgHinhanh"
             android:src="@drawable/ic_launcher_background"
             />
@@ -34,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/itemgh_txtTensp"
                 android:text="Tên sản phẩm"
+                android:textColor="@color/black"
                 android:layout_gravity="center"
                 android:textSize="18dp"
                 android:textStyle="bold"
@@ -46,10 +48,20 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Phân loại"
+                    android:hint="Thương hiệu"
+                    android:id="@+id/itemgh_txtThuongHieu"
+                    android:gravity="center"
+                    android:textAllCaps="true"
+                    android:background="@drawable/corner_button2"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:hint="Phân loại"
+                    android:gravity="center"
+                    android:textAllCaps="true"
                     android:id="@+id/itemgh_txtPhanloai"
-
-                    android:background="#d3d3d3"/>
+                    android:background="@drawable/corner_button2"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
@@ -60,7 +72,6 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/itemgh_txtGia"
                     android:text="Gia "
-                    android:textStyle="bold"
                     android:gravity="center|left"
                     android:textSize="15dp"
                     android:textColor="#FF8000"
@@ -95,6 +106,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:id="@+id/itemgh_txtSoLuong"
+                    android:textColor="@color/black"
                     android:elevation="8dp"
                     android:gravity="center"
                     android:text="1"

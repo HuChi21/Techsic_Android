@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Patterns;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -38,7 +39,7 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dangnhap);
         apibanhang = RetrofitUtilities.getRetrofit(RetrofitInterface.BASE_URL).create(RetrofitInterface.class);
-
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWidget();
     }
 
@@ -72,6 +73,7 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
             case R.id.txtDangKy:
                 Intent intent = new Intent(getApplicationContext(), DangkyActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                 break;
             case R.id.txtQuenMK:
                 actionQuenMK();
@@ -85,6 +87,7 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
         if (email.equals("admin") && matkhau.equals("")) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in, R.anim.nothing);
             finish();
             return;
         }
@@ -126,18 +129,19 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
                                         RetrofitUtilities.taiKhoanGanDay = taiKhoanModel.getResult().get(0);
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         startActivity(intent);
+                                        overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                                         finish();
                                     }
-                                }, 2000);
+                                }, 1500);
                             } else {
                                 progressBarDangnhap.setVisibility(View.VISIBLE);
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
                                         Toast.makeText(getApplicationContext(), taiKhoanModel.getMessage(), Toast.LENGTH_SHORT).show();
-                                        progressBarDangnhap.setVisibility(View.INVISIBLE);
+                                        progressBarDangnhap.setVisibility(View.GONE);
                                     }
-                                }, 2000);
+                                }, 1500);
                             }
                         },
                         throwable -> {
@@ -170,7 +174,7 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
                                         Toast.makeText(getApplicationContext(), taiKhoanModel.getMessage(), Toast.LENGTH_SHORT).show();
                                         progressBarDangnhap.setVisibility(View.GONE);
                                     }
-                                },2000);
+                                },1500);
                             }
                             else{
                                 progressBarDangnhap.setVisibility(View.VISIBLE);
@@ -180,7 +184,7 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
                                         progressBarDangnhap.setVisibility(View.GONE);
                                         Toast.makeText(getApplicationContext(),taiKhoanModel.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
-                                },2000);
+                                },1500);
                             }
                         },
                         throwable -> {
@@ -197,6 +201,12 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
             edtEmail.setText(RetrofitUtilities.taiKhoanGanDay.getEmail());
             edtMatkhau.setText(RetrofitUtilities.taiKhoanGanDay.getMatkhau());
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
     @Override

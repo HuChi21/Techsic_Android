@@ -3,7 +3,6 @@ package com.example.techsic.adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.techsic.R;
-import com.example.techsic.activities.GiohangActivity;
 import com.example.techsic.interfaces.ImageClickListener;
 import com.example.techsic.models.GioHang;
 import com.example.techsic.models.eventbus.TinhTongEvent;
@@ -56,14 +54,15 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
         Glide.with(context).load(gioHang.getHinhanh()).into(holder.imgHinhanh);
         holder.txtTensp.setText(gioHang.getTensp());
         holder.txtPhanloai.setText(gioHang.getPhanloai());
+        holder.txtThuonghieu.setText(gioHang.getThuonghieu());
         NumberFormat format = NumberFormat.getCurrencyInstance();
         format.setMaximumFractionDigits(0);
         format.setCurrency(Currency.getInstance("VND"));
         holder.txtGia.setText(format.format(gioHang.getGiasp()));
         BigDecimal giakm = gioHang.getGiasp().add(new BigDecimal("500000")) ;
-        holder.txtGiaKM.setText(format.format(giakm));
-        holder.txtGiaKM.setPaintFlags(holder.txtGiaKM.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        holder.txtSoLuong.setText(gioHang.getSoluong()+"");
+        holder.txtGiakm.setText(format.format(giakm));
+        holder.txtGiakm.setPaintFlags(holder.txtGiakm.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        holder.txtSoluong.setText(gioHang.getSoluong()+"");
         BigDecimal tongtien = gioHang.getGiasp().multiply(BigDecimal.valueOf(gioHang.getSoluong()));
         holder.txtTongtien.setText(format.format(tongtien));
         holder.setListener(new ImageClickListener() {
@@ -74,7 +73,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
                         //decrease item
                         int soLuongMoi = gioHangList.get(pos).getSoluong()-1;
                         gioHangList.get(pos).setSoluong(soLuongMoi);
-                        holder.txtSoLuong.setText(gioHangList.get(pos).getSoluong()+"");
+                        holder.txtSoluong.setText(gioHangList.get(pos).getSoluong()+"");
                         BigDecimal tongtien = gioHangList.get(pos).getGiasp().multiply(new BigDecimal(gioHangList.get(pos).getSoluong()));
                         holder.txtTongtien.setText(format.format(tongtien));
 
@@ -114,7 +113,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
                         int soLuongMoi = gioHangList.get(pos).getSoluong()+1;
                         gioHangList.get(pos).setSoluong(soLuongMoi);
                     }
-                    holder.txtSoLuong.setText(gioHangList.get(pos).getSoluong()+"");
+                    holder.txtSoluong.setText(gioHangList.get(pos).getSoluong()+"");
                     BigDecimal tongtien = gioHangList.get(pos).getGiasp().multiply(new BigDecimal(gioHangList.get(pos).getSoluong()));
                     holder.txtTongtien.setText(format.format(tongtien));
 
@@ -132,7 +131,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView imgHinhanh,imgAdd,imgRemove;
-        TextView txtTensp,txtPhanloai,txtGia,txtGiaKM,txtSoLuong,txtTongtien;
+        TextView txtTensp,txtPhanloai,txtGia, txtGiakm, txtSoluong,txtTongtien,txtThuonghieu;
         ImageClickListener listener;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -143,9 +142,10 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
 
             txtTensp = itemView.findViewById(R.id.itemgh_txtTensp);
             txtPhanloai = itemView.findViewById(R.id.itemgh_txtPhanloai);
+            txtThuonghieu = itemView.findViewById(R.id.itemgh_txtThuongHieu);
             txtGia = itemView.findViewById(R.id.itemgh_txtGia);
-            txtGiaKM = itemView.findViewById(R.id.itemgh_txtGiaKM);
-            txtSoLuong = itemView.findViewById(R.id.itemgh_txtSoLuong);
+            txtGiakm = itemView.findViewById(R.id.itemgh_txtGiaKM);
+            txtSoluong = itemView.findViewById(R.id.itemgh_txtSoLuong);
             txtTongtien = itemView.findViewById(R.id.itemgh_txtTongtien);
 
             //action click add/remove
