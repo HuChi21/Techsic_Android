@@ -28,6 +28,7 @@ import com.example.techsic.retrofit.RetrofitUtilities;
 
 import java.util.Calendar;
 
+import io.paperdb.Paper;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -193,6 +194,7 @@ public class DangkyActivity extends AppCompatActivity implements View.OnClickLis
                                         Intent intent = new Intent(getApplicationContext(), DangnhapActivity.class);
                                         startActivity(intent);
                                         finish();
+                                        overridePendingTransition(R.anim.nothing, R.anim.slide_out);
                                     }
                                 },1500);
 
@@ -205,7 +207,6 @@ public class DangkyActivity extends AppCompatActivity implements View.OnClickLis
                                         progressBarDangky.setVisibility(View.GONE);
                                     }
                                 },1500);
-
                             }
                         },
                         throwable -> {
@@ -214,6 +215,13 @@ public class DangkyActivity extends AppCompatActivity implements View.OnClickLis
                 ));
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.nothing, R.anim.slide_out);
+    }
+
     @Override
     protected void onDestroy() {
         compositeDisposable.clear();

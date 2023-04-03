@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
@@ -102,7 +101,7 @@ public class TabletFragment extends Fragment {
     }
 
     private void getTablet(int page) {
-        compositeDisposable.add(apibanhang.getDienThoai(page,idloaisp)
+        compositeDisposable.add(apibanhang.getSPtheoloai(page,idloaisp)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

@@ -18,7 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/border_cardview"
             android:weightSum="10">
 
             <ImageView
@@ -85,8 +84,7 @@
                         android:gravity="center|left"
                         android:text="Gia "
                         android:textColor="#FF8000"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
+                        android:textSize="15dp"/>
 
                     <TextView
                         android:id="@+id/item"
@@ -106,8 +104,7 @@
                         android:gravity="center|left"
                         android:hint="so luong"
                         android:textColor="@color/black"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
+                        android:textSize="15dp" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>

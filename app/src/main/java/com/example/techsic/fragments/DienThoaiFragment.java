@@ -103,7 +103,7 @@ public class DienThoaiFragment extends Fragment {
     }
 
     private void getDienThoai(int page) {
-        compositeDisposable.add(apibanhang.getDienThoai(page,idloaisp)
+        compositeDisposable.add(apibanhang.getSPtheoloai(page,idloaisp)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

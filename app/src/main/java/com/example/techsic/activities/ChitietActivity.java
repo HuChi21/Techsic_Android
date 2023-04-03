@@ -98,8 +98,8 @@ public class ChitietActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),GiohangActivity.class);
-                overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in, R.anim.nothing);
             }
         });
         //
@@ -222,8 +222,8 @@ public class ChitietActivity extends AppCompatActivity {
                 intent.putExtra("txtTongTien", tongtt);
                 intent.putExtra("txtSoLuong", soluong);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                 finish();
+                overridePendingTransition(R.anim.slide_in, R.anim.nothing);
             }
         });
     }
@@ -289,4 +289,9 @@ public class ChitietActivity extends AppCompatActivity {
         actionShowMore();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.nothing, R.anim.slide_out);
+    }
 }

@@ -2,7 +2,10 @@ package com.example.techsic.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,7 +41,6 @@ public class HomeFragment extends Fragment {
     private List<SanPham> sanPhamList;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     RetrofitInterface apibanhang;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,7 +81,6 @@ public class HomeFragment extends Fragment {
                 ));
 
     }
-
     private void actionViewFlipper() {
         List<String> ArrayQC = new ArrayList<>();
         //Add model tintuc
@@ -100,6 +101,7 @@ public class HomeFragment extends Fragment {
         viewFlipper.setInAnimation(slide_in);
         viewFlipper.setOutAnimation(slide_out);
     }
+
     @Override
     public void onDestroy() {
         compositeDisposable.clear();

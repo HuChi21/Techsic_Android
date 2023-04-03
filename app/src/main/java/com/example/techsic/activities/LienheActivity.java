@@ -10,9 +10,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.example.techsic.R;
 import com.google.android.material.navigation.NavigationView;
@@ -21,13 +24,14 @@ public class LienheActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private boolean doubleBackToExitPressedOnce=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lienhe);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWidget();
-        actionBar();
+        actionToolBar();
     }
     private void getWidget() {
         toolbar = (Toolbar) findViewById(R.id.toolBarLienHe);
@@ -35,10 +39,10 @@ public class LienheActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout)  findViewById(R.id.drawerLayout);
     }
 
-    private void actionBar() {
+    private void actionToolBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(R.drawable.baseline_menu_24);
+        toolbar.setNavigationIcon(R.drawable.baseline_headset_mic_24);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,15 +55,15 @@ public class LienheActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.menuHome:
                         Intent home = new Intent(getApplicationContext(),MainActivity.class);
-                        home.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(home);
                         finish();
+                        overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                         break;
                     case R.id.menuThongtin:
                         Intent thongtin = new Intent(getApplicationContext(),ThongtinActivity.class);
-                        thongtin.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(thongtin);
                         finish();
+                        overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                         break;
                     case R.id.menuDangxuat:
                         AlertDialog.Builder builder = new AlertDialog.Builder(LienheActivity.this);
@@ -69,9 +73,9 @@ public class LienheActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         Intent dangxuat = new Intent(getApplicationContext(), DangnhapActivity.class);
-                                        dangxuat.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                         startActivity(dangxuat);
                                         finish();
+                                        overridePendingTransition(R.anim.nothing, R.anim.slide_out);
                                     }
                                 }).setNegativeButton("Huỷ bỏ", new DialogInterface.OnClickListener() {
                                     @Override
@@ -95,5 +99,24 @@ public class LienheActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Chạm lần nữa để thoát !", Toast.LENGTH_SHORT).show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 }

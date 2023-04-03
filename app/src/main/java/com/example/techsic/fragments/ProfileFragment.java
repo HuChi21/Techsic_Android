@@ -13,8 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.techsic.R;
-import com.example.techsic.activities.InforActivity;
+import com.example.techsic.activities.NguoiDungActivity;
 import com.example.techsic.activities.XemDonHangActivity;
+import com.example.techsic.retrofit.RetrofitUtilities;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
     private ImageView imganh;
@@ -34,6 +35,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         btnThongtinnguoidung.setOnClickListener(this);
         btnXemdonhang.setOnClickListener(this);
+        txtHoten.setText(RetrofitUtilities.taiKhoanGanDay.getHoten());
         return view;
     }
 
@@ -41,16 +43,14 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnThongTinNguoiDung:
-                Intent thongtin = new Intent(getContext(), InforActivity.class);
-                thongtin.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                Intent thongtin = new Intent(getContext(), NguoiDungActivity.class);
                 startActivity(thongtin);
                 getActivity().overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                 break;
             case R.id.btnXemDonHang:
                 Intent xemdon = new Intent(getContext(), XemDonHangActivity.class);
-                xemdon.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(xemdon);
-               getActivity().overridePendingTransition(R.anim.slide_in, R.anim.nothing);
+                getActivity().overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                 break;
         }
     }

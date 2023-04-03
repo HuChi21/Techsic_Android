@@ -16,10 +16,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.XemDonHangActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.InforActivity"
+            android:name=".activities.NguoiDungActivity"
             android:exported="false" />
 
         <uses-library
@@ -32,9 +35,12 @@
         <activity
             android:name=".activities.DangnhapActivity"
             android:exported="true">
+        </activity>
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

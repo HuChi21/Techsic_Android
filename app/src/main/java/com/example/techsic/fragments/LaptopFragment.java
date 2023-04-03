@@ -109,7 +109,7 @@ public class LaptopFragment extends Fragment {
     }
 
     private void getLaptop(int page) {
-        compositeDisposable.add(apibanhang.getDienThoai(page,idloaisp)
+        compositeDisposable.add(apibanhang.getSPtheoloai(page,idloaisp)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

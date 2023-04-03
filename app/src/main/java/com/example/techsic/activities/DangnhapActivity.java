@@ -5,17 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.techsic.R;
+import com.example.techsic.models.Item;
 import com.example.techsic.retrofit.RetrofitInterface;
 import com.example.techsic.retrofit.RetrofitUtilities;
 
@@ -29,8 +32,9 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
     private TextView txtDangky,txtQuenmk;
     private Button btnDangnhap;
     private ProgressBar progressBarDangnhap;
-    private CheckBox chkNhotaikhoan;
-    private boolean isLogin = false;
+    private CheckBox cbkNhoTK;
+    String remember;
+    boolean doubleBackToExitPressedOnce =false;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     RetrofitInterface apibanhang;
 
@@ -50,8 +54,7 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
         txtQuenmk = (TextView) findViewById(R.id.txtQuenMK);
         btnDangnhap = (Button) findViewById(R.id.btnDangNhap);
         progressBarDangnhap = (ProgressBar) findViewById(R.id.progressBarDangNhap);
-        chkNhotaikhoan = (CheckBox) findViewById(R.id.chkNhoTaiKhoan);
-
+        cbkNhoTK = (CheckBox) findViewById(R.id.chkNhoTaiKhoan);
         btnDangnhap.setOnClickListener(this);
         txtDangky.setOnClickListener(this);
         txtQuenmk.setOnClickListener(this);
@@ -62,6 +65,28 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
             edtEmail.setText(Paper.book().read("email"));
             edtMatkhau.setText(Paper.book().read("matkhau"));
         }
+
+//        cbkNhoTK.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if(cbkNhoTK.isChecked()){
+//                    Toast.makeText(DangnhapActivity.this, "Checked", Toast.LENGTH_SHORT).show();
+//                    String remember = "true";
+//                    Paper.book().write("remember",remember);
+//
+//
+//                } else if (!cbkNhoTK.isChecked()) {
+//                    Toast.makeText(DangnhapActivity.this, "UnChecked", Toast.LENGTH_SHORT).show();
+//                    String remember = "false";
+//                    Paper.book().write("remember",remember);
+//                    RetrofitUtilities.taiKhoanGanDay.setEmail("");
+//                    RetrofitUtilities.taiKhoanGanDay.setMatkhau("");
+//
+//                    Paper.book().write("taikhoan",RetrofitUtilities.taiKhoanGanDay);
+//                }
+//            }
+//        });
+
     }
 
     @Override
@@ -87,8 +112,8 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
         if (email.equals("admin") && matkhau.equals("")) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
-            overridePendingTransition(R.anim.slide_in, R.anim.nothing);
             finish();
+            overridePendingTransition(R.anim.slide_in, R.anim.nothing);
             return;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -106,14 +131,19 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
-        if (chkNhotaikhoan.isChecked()) {
-            Paper.book().write("email", email);
-            Paper.book().write("matkhau", matkhau);
-        } else {
-            Paper.book().write("email", "");
-            Paper.book().write("matkhau", "");
+        if(!cbkNhoTK.isChecked()){
+            edtEmail.setText(Paper.book().read("email"));
+            edtMatkhau.setText(Paper.book().read("matkhau"));
+            remember = "false";
+            Paper.book().write("remember",remember);
+            cbkNhoTK.setChecked(false);
         }
-
+        else{
+            edtEmail.setText(Paper.book().read("email"));
+            edtMatkhau.setText(Paper.book().read("matkhau"));
+            Paper.book().write("remember",true);
+            cbkNhoTK.setChecked(true);
+        }
 
         compositeDisposable.add(apibanhang.setDangNhap(email, matkhau)
                 .subscribeOn(Schedulers.io())
@@ -127,10 +157,11 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
                                     public void run() {
                                         Toast.makeText(getApplicationContext(), taiKhoanModel.getMessage(), Toast.LENGTH_SHORT).show();
                                         RetrofitUtilities.taiKhoanGanDay = taiKhoanModel.getResult().get(0);
+                                        Paper.book().write("taikhoan",RetrofitUtilities.taiKhoanGanDay);
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         startActivity(intent);
-                                        overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                                         finish();
+                                        overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                                     }
                                 }, 1500);
                             } else {
@@ -197,18 +228,32 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onResume() {
         super.onResume();
-        if(RetrofitUtilities.taiKhoanGanDay.getEmail() != null && RetrofitUtilities.taiKhoanGanDay.getMatkhau() != null){
+        if(RetrofitUtilities.taiKhoanGanDay != null){
             edtEmail.setText(RetrofitUtilities.taiKhoanGanDay.getEmail());
             edtMatkhau.setText(RetrofitUtilities.taiKhoanGanDay.getMatkhau());
         }
+
+
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
 
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Chạm lần nữa để thoát !", Toast.LENGTH_SHORT).show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
     @Override
     protected void onDestroy() {
         compositeDisposable.clear();

@@ -1,10 +1,7 @@
 package com.example.techsic.retrofit;
 
-import com.bumptech.glide.disklrucache.DiskLruCache;
 import com.example.techsic.models.DonHangModel;
-import com.example.techsic.models.LoaiSPModel;
 import com.example.techsic.models.SanPhamModel;
-import com.example.techsic.models.TaiKhoan;
 import com.example.techsic.models.TaiKhoanModel;
 
 import io.reactivex.rxjava3.core.Observable;
@@ -14,18 +11,22 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface RetrofitInterface {
-//    public static final String BASE_URL="http://192.168.83.191/techsic/" ;
-   public static final String BASE_URL="http://192.168.22.109:8080/techsic/" ;
+//    public static final String BASE_URL="http://192.168.83.187/techsic/" ;
+//   public static final String BASE_URL="http://192.168.22.109:8080/techsic/" ;
+   public static final String BASE_URL="http://192.168.1.37:8080/techsic/" ;
 
-    @GET("getloaisp.php")
-    Observable<LoaiSPModel> getLoaiSP();
+    @POST("getsp.php")
+    @FormUrlEncoded
+    Observable<SanPhamModel> getSP(
+            @Field("search") String search
+    );
 
     @GET("getspmoi.php")
     Observable<SanPhamModel> getSPMoi();
 
-    @POST("getsp.php")
+    @POST("getsptheoloai.php")
     @FormUrlEncoded
-    Observable<SanPhamModel> getDienThoai(
+    Observable<SanPhamModel> getSPtheoloai(
             @Field("page") int page,
             @Field("idloaisp") int idloaisp
     );

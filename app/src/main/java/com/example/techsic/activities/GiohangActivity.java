@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
@@ -34,6 +36,7 @@ public class GiohangActivity extends AppCompatActivity {
     private RecyclerView giohangRecyclerview;
     private ConstraintLayout layoutGiohangtrong;
     private Button btnBuy;
+    private CheckBox cbkTatca;
     private Toolbar toolbarGioHang;
 
     private List<GioHang> gioHangList;
@@ -70,24 +73,27 @@ public class GiohangActivity extends AppCompatActivity {
 
     private void actionTongThanhToan() {
         tongtt = 0;
-        for(int i = 0; i<RetrofitUtilities.giohanglist.size(); i++){
+        for(int i = 0; i<RetrofitUtilities.muahangList.size(); i++){
 
-            tongtt = tongtt + RetrofitUtilities.giohanglist.get(i).getGiasp().longValue() * RetrofitUtilities.giohanglist.get(i).getSoluong();
+            tongtt = tongtt + RetrofitUtilities.muahangList.get(i).getGiasp().longValue() * RetrofitUtilities.muahangList.get(i).getSoluong();
         }
         BigDecimal tongthanhtoan = BigDecimal.valueOf(tongtt);
         NumberFormat format = NumberFormat.getCurrencyInstance();
         format.setMaximumFractionDigits(0);
         format.setCurrency(Currency.getInstance("VND"));
         txtTongthanhtoan.setText(format.format(tongthanhtoan));
-        btnBuy.setText("Mua ngay("+RetrofitUtilities.giohanglist.size()+")");
+        btnBuy.setText("Mua ngay("+RetrofitUtilities.muahangList.size()+")");
         btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),TinhtienActivity.class);
                 intent.putExtra("txtTongTien", tongtt);
                 startActivity(intent);
+                finish();
+                overridePendingTransition(R.anim.slide_in, R.anim.nothing);
             }
         });
+
     }
 
     private void actionGioHang() {
@@ -97,6 +103,7 @@ public class GiohangActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                overridePendingTransition(R.anim.nothing, R.anim.slide_out);
             }
         });
         giohangRecyclerview.setHasFixedSize(true);
@@ -104,17 +111,8 @@ public class GiohangActivity extends AppCompatActivity {
         giohangRecyclerview.setLayoutManager(layoutManager);
         if(RetrofitUtilities.giohanglist.size() == 0){
             layoutGiohangtrong.setVisibility(View.VISIBLE);
-            btnBuy.setAlpha(.5f);
+            btnBuy.setAlpha(.2f);
             btnBuy.setEnabled(false);
-//            btnBuy.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-//                    startActivity(intent);
-//                    overridePendingTransition(R.anim.slide_in, R.anim.nothing);
-//                    finish();
-//                }
-//            });
         }else{
             gioHangAdapter = new GioHangAdapter(getApplicationContext(),RetrofitUtilities.giohanglist);
             giohangRecyclerview.setAdapter(gioHangAdapter);
@@ -126,7 +124,14 @@ public class GiohangActivity extends AppCompatActivity {
         txtTongthanhtoan = (TextView) findViewById(R.id.txtTongThanhToan);
         giohangRecyclerview = (RecyclerView) findViewById(R.id.gioHangRecyclerView);
         btnBuy = (Button) findViewById(R.id.btnBuy);
+        cbkTatca = (CheckBox) findViewById(R.id.cbkTatca);
         toolbarGioHang = (Toolbar) findViewById(R.id.toolBarGioHang);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.nothing, R.anim.slide_out);
     }
 }

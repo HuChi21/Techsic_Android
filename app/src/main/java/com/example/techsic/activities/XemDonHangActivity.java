@@ -52,6 +52,7 @@ public class XemDonHangActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                overridePendingTransition(R.anim.nothing, R.anim.slide_out);
             }
         });
     }
@@ -68,6 +69,12 @@ public class XemDonHangActivity extends AppCompatActivity {
                             Toast.makeText(this, "Xảy ra lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                 ));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.nothing, R.anim.slide_out);
     }
 
     @Override

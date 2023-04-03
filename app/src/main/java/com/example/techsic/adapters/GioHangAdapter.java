@@ -7,6 +7,8 @@ import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,6 +67,24 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
         holder.txtSoluong.setText(gioHang.getSoluong()+"");
         BigDecimal tongtien = gioHang.getGiasp().multiply(BigDecimal.valueOf(gioHang.getSoluong()));
         holder.txtTongtien.setText(format.format(tongtien));
+
+        holder.cbkSanpham.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    RetrofitUtilities.muahangList.add(gioHang);
+                    EventBus.getDefault().postSticky(new TinhTongEvent());
+                }
+                else{
+                    for(int i=0;i<RetrofitUtilities.muahangList.size();i++){
+                        if(RetrofitUtilities.muahangList.get(i).getIdsp() == gioHang.getIdsp()){
+                            RetrofitUtilities.muahangList.remove(i);
+                            EventBus.getDefault().postSticky(new TinhTongEvent());
+                        }
+                    }
+                }
+            }
+        });
         holder.setListener(new ImageClickListener() {
             @Override
             public void onImageClick(View view, int pos, int value) {
@@ -133,6 +153,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
         ImageView imgHinhanh,imgAdd,imgRemove;
         TextView txtTensp,txtPhanloai,txtGia, txtGiakm, txtSoluong,txtTongtien,txtThuonghieu;
         ImageClickListener listener;
+        CheckBox cbkSanpham;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             imgHinhanh = itemView.findViewById(R.id.itemgh_imgHinhanh);
@@ -147,7 +168,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.MyViewHo
             txtGiakm = itemView.findViewById(R.id.itemgh_txtGiaKM);
             txtSoluong = itemView.findViewById(R.id.itemgh_txtSoLuong);
             txtTongtien = itemView.findViewById(R.id.itemgh_txtTongtien);
-
+            cbkSanpham = (CheckBox) itemView.findViewById(R.id.cbkSanPham);
             //action click add/remove
             imgAdd.setOnClickListener(this);
             imgRemove.setOnClickListener(this);

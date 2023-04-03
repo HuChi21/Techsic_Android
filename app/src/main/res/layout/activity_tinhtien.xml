@@ -31,9 +31,7 @@
         android:layout_marginVertical="?attr/actionBarSize"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarThanhtoan">
-
+        app:layout_constraintStart_toStartOf="parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -138,20 +136,17 @@
                 android:textStyle="bold"
                 android:textSize="18dp"/>
 
-            <TableLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginHorizontal="20dp">
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:weightSum="1">
-
+                    android:layout_height="35dp">
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:layout_weight="0.4"
                         android:textSize="16dp"
                         android:gravity="center|left"
                         android:text="Ghi chú:"/>
@@ -160,23 +155,21 @@
                         android:id="@+id/txtGhiChu"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.6"
-                        android:gravity="right|center"
+                        android:gravity="end|center"
                         android:hint="Lưu ý cho người bán..."
                         android:textSize="16dp"
                         android:background="@android:color/transparent"
-                        android:enabled="false"
+                        android:enabled="true"
                         android:textColor="@color/black"/>
                 </TableRow>
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:weightSum="1">
+                    >
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:layout_weight="0.4"
                         android:textSize="16dp"
                         android:gravity="center|left"
                         android:text="Ngày đặt:" />
@@ -185,8 +178,7 @@
                         android:id="@+id/txtNgayDat"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.6"
-                        android:gravity="right|center"
+                        android:gravity="end|center"
                         android:hint="Ngay dat"
                         android:textSize="16dp"
                         android:background="@android:color/transparent"
@@ -195,13 +187,11 @@
                 </TableRow>
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:weightSum="1">
+                    android:layout_height="35dp">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:layout_weight="0.8"
                         android:textSize="16dp"
                         android:gravity="center|left"
                         android:text="Ngày nhận dự kiến:"  />
@@ -210,9 +200,8 @@
                         android:id="@+id/txtNgayNhan"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.2"
-                        android:gravity="right|center"
-                        android:hint="Ngay dat"
+                        android:gravity="end|center"
+                        android:hint="Ngay nhan"
                         android:textSize="16dp"
                         android:background="@android:color/transparent"
                         android:enabled="false"
@@ -220,22 +209,19 @@
                 </TableRow>
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:weightSum="1">
+                    android:layout_height="35dp">
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:layout_weight="0.5"
                         android:textSize="16dp"
                         android:gravity="center|left"
-                        android:text="Tổng tiền: " />
+                        android:text="Tổng tiền:" />
 
                     <EditText
                         android:id="@+id/txtTongTien1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:gravity="right|center"
+                        android:gravity="end|center"
                         android:hint="Tổng tiền"
                         android:textSize="16dp"
                         android:background="@android:color/transparent"
@@ -243,7 +229,7 @@
                         android:textColor="#FF8800"
                         />
                 </TableRow>
-            </TableLayout>
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -325,7 +311,7 @@
                 android:text="Chi tiết thanh toán"
                  />
 
-            <TableLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -334,12 +320,11 @@
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:weightSum="1">
+                    >
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:layout_weight="0.5"
                         android:textSize="16dp"
                         android:gravity="center|left"
                         android:text="Tổng tiền hàng:"
@@ -349,8 +334,7 @@
                         android:id="@+id/txtTongTien2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:gravity="right|center"
+                        android:gravity="end|center"
                         android:hint="Tổng tiền hàng"
                         android:textSize="16dp"
                         android:background="@android:color/transparent"
@@ -360,13 +344,11 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:weightSum="1">
+                    android:layout_height="35dp">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:layout_weight="0.5"
                         android:textSize="16dp"
                         android:gravity="center|left"
                         android:text="Tổng tiền vận chuyển:"/>
@@ -375,8 +357,7 @@
                         android:id="@+id/txtTienVanChuyen"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:gravity="right|center"
+                        android:gravity="end|center"
                         android:hint="Tổng tiền vận chuyển"
                         android:textSize="16dp"
                         android:background="@android:color/transparent"
@@ -386,13 +367,11 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:weightSum="1">
+                    android:layout_height="35dp">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:layout_weight="0.5"
                         android:text="Tổng voucher:"
                         android:textSize="16dp"
                         android:gravity="center|left" />
@@ -401,8 +380,7 @@
                         android:id="@+id/txtVoucher"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:gravity="right|center"
+                        android:gravity="end|center"
                         android:hint="Tổng voucher"
                         android:textSize="16dp"
                         android:background="@android:color/transparent"
@@ -412,13 +390,11 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:weightSum="1">
+                    android:layout_height="35dp">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:layout_weight="0.5"
                         android:textSize="16dp"
                         android:gravity="center|left"
                         android:text="Tổng thanh toán:"
@@ -428,8 +404,7 @@
                         android:id="@+id/txtTongTT"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:gravity="right|center"
+                        android:gravity="end|center"
                         android:hint="Tổng thanh toán"
                         android:textSize="16dp"
                         android:textStyle="bold"
@@ -437,7 +412,7 @@
                         android:enabled="false"
                         android:textColor="#FF8800"/>
                 </TableRow>
-            </TableLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

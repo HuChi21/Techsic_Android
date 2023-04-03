@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.techsic.R;
-import com.example.techsic.adapters.ChiTietDonHangAdapter;
 import com.example.techsic.adapters.GioHangAdapter;
 import com.example.techsic.retrofit.RetrofitInterface;
 import com.example.techsic.retrofit.RetrofitUtilities;
@@ -68,8 +67,8 @@ public class TinhtienActivity extends AppCompatActivity {
         soluong = getIntent().getIntExtra("txtSoLuong",0);
         tongItem = soluong;
         if(tongItem == 0){
-            for (int i = 0; i < RetrofitUtilities.giohanglist.size(); i++) {
-                tongItem += RetrofitUtilities.giohanglist.get(i).getSoluong();
+            for (int i = 0; i < RetrofitUtilities.muahangList.size(); i++) {
+                tongItem += RetrofitUtilities.muahangList.get(i).getSoluong();
             }
         }
     }
@@ -153,7 +152,11 @@ public class TinhtienActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                RetrofitUtilities.muahangList.clear();
+                Intent intent = new Intent(getApplicationContext(),GiohangActivity.class);
+                startActivity(intent);
                 finish();
+                overridePendingTransition(R.anim.nothing, R.anim.slide_out);
             }
         });
         getThongTin();
@@ -187,8 +190,8 @@ public class TinhtienActivity extends AppCompatActivity {
                     txtHinhthuc.setEnabled(true);
                     return;
                 }
-                Log.d("Tinhtien", new Gson().toJson(RetrofitUtilities.giohanglist));
-                compositeDisposable.add(apibanhang.setDonHang(idtaikhoan, hoten, sodt,email, diachi, ghichu, ngaydat, ngaynhan, tongItem, tongthanhtoan, new Gson().toJson(RetrofitUtilities.giohanglist))
+                Log.d("Tinhtien", new Gson().toJson(RetrofitUtilities.muahangList));
+                compositeDisposable.add(apibanhang.setDonHang(idtaikhoan, hoten, sodt,email, diachi, ghichu, ngaydat, ngaynhan, tongItem, tongthanhtoan, new Gson().toJson(RetrofitUtilities.muahangList))
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
@@ -199,9 +202,11 @@ public class TinhtienActivity extends AppCompatActivity {
                                         public void run() {
                                             progressbarTinhtien.setVisibility(View.GONE);
                                             Toast.makeText(getApplicationContext(), "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
+                                            for(int i=0;i<RetrofitUtilities.muahangList.size();i++){
+                                                RetrofitUtilities.giohanglist.remove(RetrofitUtilities.muahangList.get(i));
+                                            }
                                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                                             startActivity(intent);
-                                            RetrofitUtilities.giohanglist.clear();
                                             overridePendingTransition(R.anim.nothing, R.anim.slide_out);
                                             finish();
                                         }
@@ -221,9 +226,19 @@ public class TinhtienActivity extends AppCompatActivity {
         sanphamRecyclerview.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         sanphamRecyclerview.setLayoutManager(layoutManager);
-        GioHangAdapter gioHangAdapter = new GioHangAdapter(getApplicationContext(),RetrofitUtilities.giohanglist);
+        GioHangAdapter gioHangAdapter = new GioHangAdapter(getApplicationContext(),RetrofitUtilities.muahangList);
         sanphamRecyclerview.setAdapter(gioHangAdapter);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        RetrofitUtilities.muahangList.clear();
+        Intent intent = new Intent(getApplicationContext(),GiohangActivity.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.nothing, R.anim.slide_out);
     }
 
     @Override

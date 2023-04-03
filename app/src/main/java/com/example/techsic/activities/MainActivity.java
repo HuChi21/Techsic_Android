@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
@@ -21,13 +23,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.techsic.R;
-import com.example.techsic.adapters.LoaiSanPhamAdapter;
 import com.example.techsic.adapters.ViewPagerAdapter;
-import com.example.techsic.models.LoaiSP;
+import com.example.techsic.models.TaiKhoan;
 import com.example.techsic.retrofit.RetrofitInterface;
 import com.example.techsic.retrofit.RetrofitUtilities;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -35,14 +36,14 @@ import com.google.android.material.navigation.NavigationView;
 import com.nex3z.notificationbadge.NotificationBadge;
 
 import java.util.ArrayList;
-import java.util.List;
 
+import io.paperdb.Paper;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
 public class MainActivity extends AppCompatActivity {
     //khai bao layout
     private Toolbar toolbar;
-    private ListView listViewTrangChu;
+    private ImageView imgTimkiem;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private BottomNavigationView bottomNavigationView;
@@ -51,9 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private FrameLayout framecart;
     //khai bao adapter
     private ViewPagerAdapter viewPagerAdapter;
-    private LoaiSanPhamAdapter loaiSanPhamAdapter;
     //khai bao list
-    private List<LoaiSP> loaiSPList;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     RetrofitInterface apibanhang;
     boolean doubleBackToExitPressedOnce = false;
@@ -63,18 +62,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        apibanhang = RetrofitUtilities.getRetrofit(RetrofitInterface.BASE_URL).create(RetrofitInterface.class);
-
         //anhxa
         getWidget();
         actionBottomNav();
-        actionBar();
+        actionToolBar();
+
+        Paper.init(this);
+        if(Paper.book().read("taikhoan")!=null){
+            TaiKhoan taiKhoan = Paper.book().read("taikhoan");
+            RetrofitUtilities.taiKhoanGanDay = taiKhoan;
+        }
+
         if(isConnected(this)){
-//            getLoaiSP();
+
             actionViewPager();
         }else{
             Toast.makeText(getApplicationContext(), "Vui lòng kiểm tra kết nối mạng!", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     @Override
@@ -86,18 +91,35 @@ public class MainActivity extends AppCompatActivity {
         }
         notifsoluong.setText(String.valueOf(tongItem));
     }
+    private boolean isConnected(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo wifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo cellular = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if((wifi != null && wifi.isConnected())||(cellular != null && cellular.isConnected())){
+            return true;
+        }
+        else return false;
+    }
 
     private void getWidget() {
         toolbar = (Toolbar) findViewById(R.id.toolBarTrangChu);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        imgTimkiem = (ImageView)findViewById(R.id.imgTimKiem);
+        imgTimkiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in, R.anim.nothing);
+            }
+        });
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
         viewpager = (ViewPager) findViewById(R.id.viewPager);
         notifsoluong = (NotificationBadge) findViewById(R.id.notifSoLuong);
         framecart = (FrameLayout) findViewById(R.id.frameCart);
         navigationView = (NavigationView)  findViewById(R.id.navigationView);
-//        listViewTrangChu = (ListView)  findViewById(R.id.listViewTrangChu);
         drawerLayout = (DrawerLayout)  findViewById(R.id.drawerLayout);
         //khoi tao list
-//        loaiSPList = new ArrayList<>();
         if(RetrofitUtilities.giohanglist == null){
             RetrofitUtilities.giohanglist = new ArrayList<>();
         }else {
@@ -112,66 +134,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),GiohangActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in, R.anim.nothing);
             }
         });
-    }
-    private boolean isConnected(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo wifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        NetworkInfo cellular = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        if((wifi != null && wifi.isConnected())||(cellular != null && cellular.isConnected())){
-            return true;
-        }
-        else return false;
+
 
     }
-    private void actionBottomNav() {
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.menuHome:
-                        viewpager.setCurrentItem(0);
-                        break;
-                    case R.id.menuDienthoai:
-                        viewpager.setCurrentItem(1);
-                        break;
-                    case R.id.menuLaptop:
-                        viewpager.setCurrentItem(2);
-                        break;
-                    case R.id.menuTablet:
-                        viewpager.setCurrentItem(3);
-                        break;
-                    case R.id.menuProfile:
-                        viewpager.setCurrentItem(4);
-                        break;
-                }
-                return true;
-            }
-        });
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()){
-//                    case R.id.menuHome:
-//                        break;
-//                    case R.id.menuDienthoai:
-//                        break;
-//                    case R.id.menuLaptop:
-//                        break;
-//                    case R.id.menuTablet:
-//                        break;
-//                    case R.id.menuProfile:
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
-    }
-    private void actionBar() {
+    private void actionToolBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(R.drawable.baseline_menu_24);
+        toolbar.setNavigationIcon(R.drawable.baseline_home_24);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -184,15 +156,15 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.menuThongtin:
                         Intent thongtin = new Intent(getApplicationContext(),ThongtinActivity.class);
-                        thongtin.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(thongtin);
                         finish();
+                        overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                         break;
                     case R.id.menuLienhe:
                         Intent lienhe = new Intent(getApplicationContext(),LienheActivity.class);
-                        lienhe.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(lienhe);
                         finish();
+                        overridePendingTransition(R.anim.slide_in, R.anim.nothing);
                         break;
                     case R.id.menuDangxuat:
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -202,10 +174,16 @@ public class MainActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         Intent dangxuat = new Intent(getApplicationContext(), DangnhapActivity.class);
-                                        dangxuat.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                         startActivity(dangxuat);
-                                        overridePendingTransition(R.anim.nothing, R.anim.slide_out);
+//                                        String remember = Paper.book().read("remember");
+//                                        if(remember.equals("false")){
+                                            Paper.book().delete("taikhoan");
+//                                            RetrofitUtilities.taiKhoanGanDay = null;
+//                                        }else if(remember.equals("true")){
+//                                            Paper.book().delete("taikhoan");
+//                                        }
                                         finish();
+                                        overridePendingTransition(R.anim.nothing, R.anim.slide_out);
                                     }
                                 }).setNegativeButton("Huỷ bỏ", new DialogInterface.OnClickListener() {
                                     @Override
@@ -230,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void actionViewPager() {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewpager.setAdapter(viewPagerAdapter);
@@ -247,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 1:
                         bottomNavigationView.getMenu().findItem(R.id.menuDienthoai).setChecked(true);
-                        toolbar.setTitle("Điên thoại");
+                        toolbar.setTitle("Điện thoại");
                         break;
                     case 2:
                         bottomNavigationView.getMenu().findItem(R.id.menuLaptop).setChecked(true);
@@ -269,25 +248,33 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
-//    private void getLoaiSP() {
-//        compositeDisposable.add(apibanhang.getLoaiSP()
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(
-//                        loaiSPModel -> {
-//                            if (loaiSPModel.isSuccess()){
-//                                loaiSPList =loaiSPModel.getResult();
-//                                loaiSPAdapter = new LoaiSPAdapter(getApplicationContext(), loaiSPList);
-//                                listViewTrangChu.setAdapter(loaiSPAdapter);
-//                            }
-//                        },
-//                        throwable -> {
-//                            Toast.makeText(getApplicationContext(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-//                        }
-//                ));
-//    }
+
+    private void actionBottomNav() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.menuHome:
+                        viewpager.setCurrentItem(0);
+                        break;
+                    case R.id.menuDienthoai:
+                        viewpager.setCurrentItem(1);
+                        break;
+                    case R.id.menuLaptop:
+                        viewpager.setCurrentItem(2);
+                        break;
+                    case R.id.menuTablet:
+                        viewpager.setCurrentItem(3);
+                        break;
+                    case R.id.menuProfile:
+                        viewpager.setCurrentItem(4);
+                        break;
+                }
+                return true;
+            }
+        });
+    }
 
     @Override
     public void onBackPressed() {
@@ -306,5 +293,11 @@ public class MainActivity extends AppCompatActivity {
                 doubleBackToExitPressedOnce=false;
             }
         }, 2000);
+    }
+
+    @Override
+    protected void onDestroy() {
+        compositeDisposable.clear();
+        super.onDestroy();
     }
 }

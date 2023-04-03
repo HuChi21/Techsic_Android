@@ -1,82 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity"
-    >
+    tools:context=".activities.MainActivity">
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/drawerLayout"
         android:background="#D3D3D3">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBarTrangChu"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:id="@+id/toolBarTrangChu"
-                app:title="Trang chủ"
                 android:layout_alignParentTop="true"
-                app:titleTextColor="#FFF"
                 android:background="#FF8000"
-                >
-                <FrameLayout
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="Trang chủ"
+                app:titleTextColor="#FFF">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="?attr/actionBarSize"
-                    android:id="@+id/frameCart"
-                    android:layout_gravity="right"
-                    android:layout_marginEnd="10dp">
-                    <com.nex3z.notificationbadge.NotificationBadge
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:id="@+id/notifSoLuong"
-                        android:layout_gravity="top|right"
-                        />
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end">
+
                     <ImageView
+                        android:id="@+id/imgTimKiem"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:src="@drawable/baseline_search_24"
+                        android:backgroundTint="@color/white"
+                        android:layout_marginEnd="30dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/frameCart"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <FrameLayout
+                        android:id="@+id/frameCart"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/imgShopCart"
-                        android:src="@drawable/baseline_shopping_cart_fff"
-                        android:layout_gravity="bottom"
-                        android:layout_marginRight="10dp"
-                        />
-                </FrameLayout>
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.nex3z.notificationbadge.NotificationBadge
+                            android:id="@+id/notifSoLuong"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:elevation="10dp"
+                            android:layout_gravity="top|right" />
+
+                        <ImageView
+                            android:id="@+id/imgShopCart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/baseline_shopping_cart_fff" />
+                    </FrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.appcompat.widget.Toolbar>
             <androidx.viewpager.widget.ViewPager
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/viewPager"
-                android:layout_above="@+id/bottom_nav"
-                android:contentDescription="Its just the ViewPagerDescription"
-                android:hint="e.g 5"/>
-        </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="?attr/actionBarSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <com.google.android.material.navigation.NavigationView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/navigationView"
             android:layout_gravity="start"
+            app:headerLayout="@layout/header_nav"
             app:menu="@menu/menu_nav"
             app:itemIconTint="#FF8000"
-            app:itemTextColor="#FF8000"
-            />
+            app:itemTextColor="#FF8000">
+        </com.google.android.material.navigation.NavigationView>
 
     </androidx.drawerlayout.widget.DrawerLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_nav"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/menu_bottom_nav"
         app:itemBackground="@color/white"
         app:itemIconTint="@color/selected_item_color"
-        app:itemTextColor="@color/selected_item_color">
-
-
+        app:itemTextColor="@color/selected_item_color"
+        app:layout_constraintBottom_toBottomOf="@+id/drawerLayout"
+        app:menu="@menu/menu_bottom_nav">
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

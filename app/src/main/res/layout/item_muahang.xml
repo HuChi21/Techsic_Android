@@ -92,46 +92,19 @@
                     android:layout_marginStart="10dp"
                     />
             </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginVertical="5dp"
-                android:weightSum="3">
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:id="@+id/imgRemoveSoLuong"
-                    android:src="@drawable/baseline_remove_24"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:id="@+id/itemgh_txtSoLuong"
-                    android:textColor="@color/black"
-                    android:elevation="8dp"
-                    android:gravity="center"
-                    android:text="1"
-                    />
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:id="@+id/imgAddSoLuong"
-                    android:src="@drawable/baseline_add_24"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.5"
-                    android:id="@+id/itemgh_txtTongtien"
-                    android:text="Tong tien"
-                    android:visibility="invisible"
-                    />
-            </TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:id="@+id/itemgh_txtSoLuong"
+                android:textColor="@color/black"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:text="1"
+                />
+
+
 
         </TableLayout>
     </LinearLayout>
