@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.DienThoaiFragment">
+
+    <LinearLayout
+        android:id="@+id/layoutSapxep"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="#FFF"
+        android:orientation="horizontal"
+        android:elevation="10dp"
+        android:weightSum="4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/txt_moinhat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Mới nhất"
+            android:textColor="#d3d3d3"
+            android:textSize="16sp" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="8dp"
+            android:background="#d3d3d3" />
+        <TextView
+            android:id="@+id/txt_banchay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Bán chạy"
+            android:textColor="#d3d3d3"
+            android:textSize="16sp" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="8dp"
+            android:background="#d3d3d3" />
+        <TextView
+            android:id="@+id/txt_gia"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableEnd="@drawable/baseline_import_export_24"
+            android:drawableTint="#d3d3d3"
+            android:gravity="center"
+            android:paddingHorizontal="20dp"
+            android:text="Giá"
+            android:textColor="#d3d3d3"
+            android:textSize="16sp" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="8dp"
+            android:background="#d3d3d3" />
+        <TextView
+            android:id="@+id/txt_loc"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableEnd="@drawable/outline_filter_alt_24"
+            android:drawableTint="#d3d3d3"
+            android:gravity="center"
+            android:paddingHorizontal="20dp"
+            android:text="Lọc"
+            android:textColor="#d3d3d3"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layoutSapxep"
+        android:id="@+id/dienthoaiRecyclerView"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="5dp"
+        android:paddingBottom="50dp">
+    </androidx.recyclerview.widget.RecyclerView>
+</RelativeLayout>

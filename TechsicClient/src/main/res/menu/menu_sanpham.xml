@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuDienthoai"
+        android:title="Điện thoại"/>
+    <item
+        android:id="@+id/menuLaptop"
+        android:title="Laptop"/>
+    <item
+        android:id="@+id/menuTablet"
+        android:title="Tablet"/>
+    <item
+        android:id="@+id/menuPhukien"
+        android:title="Phụ kiện"/>
+</menu>

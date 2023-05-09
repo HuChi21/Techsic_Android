@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.DieuKhoanActivity">
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/drawerLayout"
+        android:background="#FFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:id="@+id/toolBarThongTin"
+                app:title="Điều khoản"
+                android:layout_alignParentTop="true"
+                app:titleTextColor="#FFF"
+                android:background="#FF8000"
+                />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:paddingHorizontal="16dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    app:tint="@color/techsic"
+                    android:src="@drawable/techsiclogo" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textSize="24sp"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/techsic"
+                    android:layout_marginTop="16dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Điều khoản sử dụng"
+                android:textColor="#121212"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/thoa_thuan_dieu_khoan"
+                    android:textColor="#121212"
+                    android:textSize="16sp"/>
+
+            </ScrollView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginVertical="16dp"
+                android:background="#f5f5f5" />
+             <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Điều khoản mua hàng"
+                    android:textColor="#121212"
+                    android:textStyle="bold"
+                    android:textSize="24sp"/>
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/thoa_thuan_mua_hang"
+                            android:textColor="#121212"
+                            android:textSize="16sp"/>
+
+                    </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_agree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Đồng ý"
+                    android:textAllCaps="false"
+                    android:textColor="#FFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/border_cardview2"/>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/baseline_copyright_24"
+                android:drawableTint="@color/techsic"
+                android:textColor="@color/techsic"
+                android:text="Bản quyền thuộc về Techsic Shop"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:textStyle="italic"/>
+        </LinearLayout>
+        </LinearLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/navigationView"
+            android:layout_gravity="start"
+            app:menu="@menu/menu_nav_nguoidung"
+            app:itemIconTint="#FF8000"
+            app:itemTextColor="#FF8000"
+            />
+    </androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

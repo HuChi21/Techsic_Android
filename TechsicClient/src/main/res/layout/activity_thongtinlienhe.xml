@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ThongtinLienheActivity">
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/drawerLayout"
+        android:background="#D3D3D3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:id="@+id/toolBarLienHe"
+                app:title="Thông tin liên hệ"
+                android:layout_alignParentTop="true"
+                app:titleTextColor="#FFF"
+                android:background="#FF8000"
+                />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_horizontal"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center_horizontal"
+                            app:tint="@color/techsic"
+                            android:src="@drawable/techsiclogo" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/app_name"
+                            android:textSize="24sp"
+                            android:layout_gravity="center_horizontal"
+                            android:textColor="@color/techsic"
+                            android:layout_marginTop="16dp" />
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/about_us_title"
+                        android:textSize="24sp"
+                        android:textColor="#121212"
+                        android:textStyle="bold"
+                        android:layout_marginTop="16dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/about_us_description"
+                        android:id="@+id/txtDescription"
+                        android:textColor="#121212"
+                        android:maxLines="11"
+                        android:textSize="16sp"
+                        android:layout_marginTop="14dp" />
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/techsic"
+                        android:text="Xem thêm"
+                        android:background="#FFF"
+                        android:textAllCaps="false"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginHorizontal="10dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/black"
+                        android:layout_marginHorizontal="30dp"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Liên hệ"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="#121212"
+                        android:layout_marginTop="16dp" />
+                    <TextView
+                        android:text="@string/appname_description"
+                        android:textSize="16sp"
+                        android:textColor="#121212"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="8dp"/>
+
+                    <TextView
+                        android:id="@+id/diachi"
+                        android:drawableStart="@drawable/outline_location_on_24"
+                        android:drawableTint="@color/techsic"
+                        android:text="Địa chỉ: 99 Cầu Diễn, Kiều Mai, Từ Liêm"
+                        android:textSize="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:text="Điện thoại: 0987654321"
+                        android:textSize="16sp"
+                        android:drawableStart="@drawable/outline_local_phone_24"
+                        android:drawableTint="@color/techsic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:drawableStart="@drawable/outline_email_24"
+                        android:drawableTint="@color/techsic"
+                        android:text="Email: info@techsic.com"
+                        android:textSize="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:drawableStart="@drawable/outline_south_america_24"
+                        android:drawableTint="@color/techsic"
+                        android:text="Website: www.techsic.com"
+                        android:textSize="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:drawableStart="@drawable/outline_access_time_24"
+                        android:drawableTint="@color/techsic"
+                        android:text="Giờ mở cửa: T2 - CN từ 8h - 22h"
+                        android:textSize="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="8dp"/>
+
+                </LinearLayout>
+
+            </ScrollView>
+        </LinearLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/navigationView"
+            android:layout_gravity="start"
+            app:menu="@menu/menu_nav_nguoidung"
+            app:itemIconTint="#FF8000"
+            app:itemTextColor="#FF8000"
+            />
+    </androidx.drawerlayout.widget.DrawerLayout>
+</RelativeLayout>

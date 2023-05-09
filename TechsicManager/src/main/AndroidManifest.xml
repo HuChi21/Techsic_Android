@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Techsic_Application"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activities.SuaTinTucActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ThemTinTucActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.QuanlyTintucActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ThongkeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.QuanlyChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.XemDonhangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.QuanlyDonhangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.LienheActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.XemNguoidungActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.SuaSanPhamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ThemSanPhamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.QuanlySanphamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.QuanlyNguoidungActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.DangnhapActivity"
+            android:exported="true" />
+
+        <service
+            android:name="com.example.techsicmanager.firebase.FirebaseMessageService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

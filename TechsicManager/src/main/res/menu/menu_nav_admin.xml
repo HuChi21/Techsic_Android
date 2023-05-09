@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuHome"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Home"/>
+    <item
+        android:id="@+id/menuSanpham"
+        android:icon="@drawable/baseline_phone_android_24"
+        android:title="Quản lý sản phẩm"/>
+
+    <item
+        android:id="@+id/menuTinTuc"
+        android:icon="@drawable/baseline_tablet_mac_24"
+        android:title="Quản lý tin tức"/>
+    <item
+        android:id="@+id/menuNguoidung"
+        android:icon="@drawable/baseline_account_circle_24"
+        android:title="Quản lý người dùng"/>
+    <item
+        android:id="@+id/menuDangxuat"
+        android:icon="@drawable/baseline_account_circle_24"
+        android:title="Đăng xuất"/>
+</menu>

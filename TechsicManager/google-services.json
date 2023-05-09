@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "441838583815",
+    "project_id": "techsic-dfd81",
+    "storage_bucket": "techsic-dfd81.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441838583815:android:883777a41c3299c3fb2aa2",
+        "android_client_info": {
+          "package_name": "com.example.techsic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "441838583815-nsppan6fm2ro9mkoa4h6a1f9ha44dl4j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy4ygsW3XGoJwKlAs_5aHWToZ0_VC3jqQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "441838583815-nsppan6fm2ro9mkoa4h6a1f9ha44dl4j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441838583815:android:4d3a43c910cb12f3fb2aa2",
+        "android_client_info": {
+          "package_name": "com.example.techsicmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "441838583815-nsppan6fm2ro9mkoa4h6a1f9ha44dl4j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy4ygsW3XGoJwKlAs_5aHWToZ0_VC3jqQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "441838583815-nsppan6fm2ro9mkoa4h6a1f9ha44dl4j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

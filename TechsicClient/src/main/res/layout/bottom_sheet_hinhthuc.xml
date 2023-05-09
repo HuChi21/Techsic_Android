@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:orientation="vertical"
+    android:id="@+id/hinhthuc_bottom"
+    android:background="#FFF"
+    android:elevation="20dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|end"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingVertical="5dp"
+            android:layout_marginStart="80dp"
+            android:gravity="center"
+            android:id="@+id/txtTieude"
+            android:hint="Hình thức thanh toán"
+            android:textSize="20dp"
+            android:textColor="@color/techsic"/>
+        <ImageView
+            android:id="@+id/imgClose"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_close_24"
+            app:tint="@color/techsic" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_doimk"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button_momo"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:background="#FFF"
+            android:drawableStart="@drawable/momologoapp"
+            android:drawablePadding="-50dp"
+            android:text="Momo"
+            android:textAllCaps="false"
+            android:textColor="#b0006d"/>
+        <Button
+            android:id="@+id/button_zalopay"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:drawableStart="@drawable/zalopaylogoapp"
+            android:background="#FFF"
+            android:drawablePadding="-50dp"
+            android:text="Zalopay"
+            android:textAllCaps="false"
+            android:textColor="#0068ff"
+            app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
+</LinearLayout>

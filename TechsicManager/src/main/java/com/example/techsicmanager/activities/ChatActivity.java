@@ -1,0 +1,164 @@
+package com.example.techsicmanager.activities;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.techsicmanager.R;
+import com.example.techsicmanager.adapters.ChatAdapter;
+import com.example.techsicmanager.firebase.ChatModel;
+import com.example.techsicmanager.firebase.RetrofitPushNotif;
+import com.example.techsicmanager.retrofit.RetrofitUtilities;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+
+public class ChatActivity extends AppCompatActivity implements View.OnClickListener {
+    private RecyclerView recyclerView;
+    private TextView btnGui;
+    private EditText edtMessage;
+    private Toolbar toolbar;
+    FirebaseFirestore db;
+    private List<ChatModel> chatList = new ArrayList<>();
+    private ChatAdapter chatAdapter;
+    String idnguoinhan ;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chat);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        idnguoinhan = String.valueOf(getIntent().getIntExtra("id",0)); //id nguoi nhan
+        db =FirebaseFirestore.getInstance();
+        getWidget();
+        actionToolbar();
+        listenMessage();
+    }
+    private void getWidget() {
+        toolbar = findViewById(R.id.chatToolbar);
+        edtMessage = findViewById(R.id.edtMessage);
+        btnGui = findViewById(R.id.btnGui);
+
+        btnGui.setOnClickListener(this);
+
+        recyclerView = findViewById(R.id.chatRecyclerview);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+
+        chatAdapter = new ChatAdapter(getApplicationContext(),chatList,String.valueOf(RetrofitUtilities.taiKhoanGanDay.getIdtaikhoan()));
+        recyclerView.setAdapter(chatAdapter);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnGui:
+                pushMessageInFirebase();
+                break;
+        }
+    }
+
+    private void listenMessage(){
+        db.collection(RetrofitPushNotif.PATH_CHAT)
+                .whereEqualTo(RetrofitPushNotif.guiID,String.valueOf(RetrofitUtilities.taiKhoanGanDay.getIdtaikhoan()))
+                .whereEqualTo(RetrofitPushNotif.nhanID, idnguoinhan)
+                .addSnapshotListener(eventListener);
+
+        db.collection(RetrofitPushNotif.PATH_CHAT)
+                .whereEqualTo(RetrofitPushNotif.guiID,idnguoinhan)
+                .whereEqualTo(RetrofitPushNotif.nhanID,String.valueOf(RetrofitUtilities.taiKhoanGanDay.getIdtaikhoan()))
+                .addSnapshotListener(eventListener);
+    }
+
+
+    private final EventListener<QuerySnapshot> eventListener = (value,error)->{
+        if(error!=null){
+            return;
+        }
+        if(value != null){
+            int count = chatList.size();
+            for(DocumentChange documentChange : value.getDocumentChanges()){
+                if(documentChange.getType() == DocumentChange.Type.ADDED){
+                    ChatModel chat = new ChatModel();
+                    chat.guiID = documentChange.getDocument().getString(RetrofitPushNotif.guiID);
+                    chat.nhanID = documentChange.getDocument().getString(RetrofitPushNotif.nhanID);
+                    chat.tinnhan = documentChange.getDocument().getString(RetrofitPushNotif.tinnhan);
+                    chat.thoigianObj = documentChange.getDocument().getDate(RetrofitPushNotif.thoigian);
+                    chat.thoigian = FormatDatetime(documentChange.getDocument().getDate(RetrofitPushNotif.thoigian));
+                    chatList.add(chat);
+                }
+            }
+            Collections.sort(chatList,(obj1,obj2)->obj1.thoigianObj.compareTo(obj2.thoigianObj));
+            if(count == 0){
+                chatAdapter.notifyDataSetChanged();
+            }else{
+                chatAdapter.notifyItemRangeInserted(chatList.size(),chatList.size());
+                recyclerView.smoothScrollToPosition(chatList.size()-1);
+            }
+        }
+    };
+
+    private String FormatDatetime(Date date){
+        return new SimpleDateFormat("dd-MM-yyyy hh:mm a", Locale.getDefault()).format(date);
+    }
+    private void pushMessageInFirebase() {
+        String messageString = edtMessage.getText().toString().trim();
+        if(!TextUtils.isEmpty(messageString)){
+            HashMap<String,Object> message = new HashMap<>();
+            message.put(RetrofitPushNotif.guiID,String.valueOf(RetrofitUtilities.taiKhoanGanDay.getIdtaikhoan()));
+            message.put(RetrofitPushNotif.nhanID, idnguoinhan);
+            message.put(RetrofitPushNotif.tinnhan,messageString);
+            message.put(RetrofitPushNotif.thoigian,new Date());
+            db.collection(RetrofitPushNotif.PATH_CHAT).add(message);
+            edtMessage.setText("");
+        }
+    }
+    private void themTaiKhoanChat() {
+        HashMap<String, Object> taikhoan = new HashMap<>();
+        taikhoan.put("id",RetrofitUtilities.taiKhoanGanDay.getIdtaikhoan());
+        taikhoan.put("email",RetrofitUtilities.taiKhoanGanDay.getEmail());
+        taikhoan.put("hoten",RetrofitUtilities.taiKhoanGanDay.getHoten());
+        db.collection("taikhoans").document(String.valueOf(RetrofitUtilities.taiKhoanGanDay.getIdtaikhoan())).set(taikhoan);
+
+    }
+    private void actionToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_24);
+        toolbar.setTitle(null);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        finish();
+        overridePendingTransition(R.anim.nothing,R.anim.slide_out);
+    }
+}

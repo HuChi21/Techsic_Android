@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Techsic</string>
+    <string name="text_import">import</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_us_title">Về chúng tôi</string>
+    <string name="appname_description">Techsic - Cửa hàng chuyên bán các sản phẩm công nghệ điện thoại, laptop, tablet.</string>
+    <string name="about_us_description">"\t"Chào mừng đến với TechSic - Cửa hàng chuyên bán sản phẩm công nghệ hàng đầu! Chúng tôi cung cấp một loạt các sản phẩm công nghệ cao cấp như điện thoại, laptop, tablet và nhiều sản phẩm khác."\n""\n"
+"\t"Với hơn 10 năm kinh nghiệm trong ngành công nghệ, chúng tôi cam kết đem đến cho khách hàng của mình các sản phẩm chất lượng cao cùng với dịch vụ hỗ trợ tuyệt vời. Chúng tôi luôn cập nhật những sản phẩm mới nhất và tốt nhất trên thị trường để đáp ứng nhu cầu của khách hàng."\n""\n"
+"\t"Tại TechSic, chúng tôi không chỉ cung cấp những sản phẩm công nghệ tốt nhất, mà còn đảm bảo rằng khách hàng của chúng tôi có thể tận hưởng trải nghiệm mua sắm tuyệt vời. Với một giao diện dễ sử dụng, khách hàng của chúng tôi có thể tìm kiếm và mua sắm các sản phẩm công nghệ một cách thuận tiện và nhanh chóng."\n""\n"
+"\t"Nếu bạn cần tư vấn hoặc hỗ trợ về sản phẩm, đội ngũ nhân viên của chúng tôi luôn sẵn sàng để giúp đỡ bạn. Chúng tôi cam kết đem đến cho khách hàng của mình sự hài lòng nhất, và đảm bảo rằng mỗi sản phẩm của chúng tôi đều được kiểm tra kỹ càng trước khi bán ra."\n""\n"
+"\t"Cảm ơn bạn đã ghé thăm TechSic! Hãy tìm kiếm và khám phá các sản phẩm công nghệ tuyệt vời của chúng tôi trên ứng dụng Android của bạn.</string>
+
+    <string name="thoa_thuan_dieu_khoan">1.Giới thiệu "\n"
+"\t"Techsic là một ứng dụng bán hàng trực tuyến cho các sản phẩm công nghệ. Ứng dụng này được phát triển và quản lý bởi công ty Techsic. Bằng việc sử dụng ứng dụng Techsic, người dùng đồng ý với các điều khoản và điều kiện sau đây."\n""\n"
+
+2.Điều kiện sử dụng"\n"
+
+"\t"Người dùng phải đủ 18 tuổi và có khả năng hợp pháp để ký kết thỏa thuận này."\n"
+"\t"Người dùng không được sử dụng ứng dụng Techsic cho các mục đích phi pháp hoặc gian lận."\n"
+"\t"Người dùng không được sao chép, sửa đổi hoặc phân phối nội dung hoặc thông tin từ ứng dụng Techsic mà không được sự cho phép của Techsic."\n"
+"\t"Người dùng phải cung cấp thông tin chính xác và đầy đủ khi đăng ký tài khoản và thực hiện các giao dịch trên ứng dụng Techsic."\n""\n"
+3.Bảo mật thông tin"\n"
+"\t"Techsic cam kết bảo vệ thông tin cá nhân của người dùng và không tiết lộ thông tin cho bất kỳ bên thứ ba nào mà không có sự chấp thuận của người dùng. Techsic sử dụng các biện pháp bảo mật để bảo vệ thông tin cá nhân của người dùng và đảm bảo rằng thông tin của người dùng được bảo mật và an toàn."\n""\n"
+
+4.Trách nhiệm pháp lý"\n"
+"\t"Techsic không chịu trách nhiệm về các sản phẩm hoặc dịch vụ được bán trên ứng dụng Techsic. Các giao dịch được thực hiện trên ứng dụng Techsic là trách nhiệm của người dùng. Nếu có bất kỳ tranh chấp nào liên quan đến các giao dịch trên ứng dụng Techsic, người dùng đồng ý giải quyết tranh chấp đó với bên bán hàng và không đưa Techsic vào tranh chấp."\n""\n"
+
+5.Thay đổi thoả thuận"\n"
+"\t"Techsic có quyền thay đổi thoả thuận này bất cứ lúc nào và thông báo cho người dùng bằng cách cập nhật phiên bản thoả thuận mới trên ứng dụng Techsic."\n""\n"
+
+6.Kết luận"\n"
+"\t"Bằng cách sử dụng ứng dụng Techsic, người dùng đồng ý với các điều khoản và điều kiện trong thoả thuận này. Nếu bạn không đồng ý với các điều khoản và điều kiện này, vui lòng không sử dụng ứng dụng Techsic.</string>
+    <string name="thoa_thuan_mua_hang">
+1.Phạm vi: "\n""\t"Điều khoản này áp dụng cho tất cả người dùng ứng dụng Techsic trên thiết bị Android."\n""\n"
+
+Mô tả sản phẩm: "\n""\t"Techsic là một ứng dụng di động được phát triển bởi công ty Techsic Technology nhằm cung cấp các sản phẩm công nghệ như điện thoại, máy tính bảng, laptop, phụ kiện, v.v."\n""\n"
+
+Đặt hàng và thanh toán: "\n""\t"Người dùng có thể đặt hàng sản phẩm bằng cách thêm sản phẩm vào giỏ hàng và thực hiện thanh toán thông qua các phương thức thanh toán được cung cấp trong ứng dụng. Việc thanh toán sẽ được xử lý bởi các cổng thanh toán trực tuyến được tích hợp sẵn trong ứng dụng."\n""\n"
+
+Đơn hàng và giao hàng: "\n""\t"Sau khi thanh toán thành công, đơn hàng sẽ được xử lý và giao đến địa chỉ được cung cấp bởi người dùng. Thời gian giao hàng có thể khác nhau tùy thuộc vào vị trí và khoảng cách từ địa chỉ giao hàng đến kho hàng của công ty."\n""\n"
+
+Đổi trả và hoàn tiền: "\n""\t"Người dùng có thể yêu cầu đổi trả sản phẩm trong vòng 7 ngày kể từ ngày nhận hàng nếu sản phẩm bị lỗi hoặc không đúng với mô tả. Trường hợp đổi trả sản phẩm được chấp nhận, công ty sẽ hoàn tiền cho người dùng hoặc cung cấp sản phẩm mới trong thời gian ngắn nhất."\n""\n"
+
+Chính sách bảo mật: "\n""\t"Công ty cam kết bảo vệ thông tin của người dùng và sử dụng thông tin chỉ cho mục đích xử lý đơn hàng và cung cấp dịch vụ cho người dùng. Công ty sẽ không chia sẻ thông tin cá nhân của người dùng cho bất kỳ bên thứ ba nào ngoại trừ các đối tác cung cấp dịch vụ và cổng thanh toán trực tuyến."\n""\n"
+
+Thay đổi điều khoản: "\n""\t"Công ty có quyền thay đổi điều khoản mua hàng này bất cứ lúc nào mà không cần thông báo trước cho người dùng. Sự thay đổi này có hiệu lực ngay khi được công bố trên ứng dụng."\n""\n"
+
+Liên hệ: "\n""\t"Nếu có bất kỳ câu hỏi hoặc khiếu nại nào liên quan đến đơn hàng hoặc sản phẩm, người dùng có thể liên hệ với công ty qua địa chỉ email support@techsic.com hoặc số điện thoại 1800-xxxx.</string>
+</resources>

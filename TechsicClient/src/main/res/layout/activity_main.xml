@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/drawerLayout"
+        android:background="#FFF">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBarTrangChu"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_alignParentTop="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="Trang chủ"
+                app:titleTextColor="#FF8000">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center|end">
+
+                    <ImageView
+                        android:id="@+id/imgTimKiem"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="15dp"
+                        android:src="@drawable/baseline_search_24"
+                        android:tint="#ff8800"
+                        />
+                    <FrameLayout
+                        android:id="@+id/frameCart"
+                        android:layout_width="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="?attr/actionBarSize">
+                        <com.nex3z.notificationbadge.NotificationBadge
+                            android:id="@+id/notifSoLuong"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:elevation="10dp"
+                            android:layout_gravity="top|right" />
+
+                        <ImageView
+                            android:id="@+id/imgShopCart"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="5dp"
+                            android:tint="#ff8800"
+                            android:src="@drawable/baseline_shopping_cart_fff" />
+                    </FrameLayout>
+                    <ImageView
+                        android:id="@+id/imgChat"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/baseline_chat_24"
+                        android:tint="#ff8800"
+                        android:layout_gravity="center|end"
+                        android:layout_marginEnd="10dp"
+                         />
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginVertical="?attr/actionBarSize"
+                app:layout_constraintTop_toBottomOf="@+id/toolBarTrangChu">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:layout_editor_absoluteY="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFF"
+                        android:orientation="vertical">
+
+                        <ViewFlipper
+                            android:id="@+id/viewFlipper"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            android:layout_marginHorizontal="10dp"
+                            android:elevation="20dp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:background="#f5f5f5" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:paddingTop="5dp"
+                            android:text="Danh mục sản phẩm"
+                            android:textColor="#FF8000"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/loaispRecyclerview"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="10dp"
+                            android:scrollbars="horizontal"
+                            android:background="#FFF" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:background="#f5f5f5" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:paddingTop="5dp"
+                            android:text="Sản phẩm mới nhất"
+                            android:textColor="#FF8000"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/homeRecyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="10dp"
+                            android:background="#FFF" />
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_nav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:itemBackground="@color/white"
+                app:itemIconTint="@color/selected_item_color"
+                app:itemTextColor="@color/selected_item_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/menu_bottom_nav" />
+
+            <com.github.clans.fab.FloatingActionMenu
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:src="@drawable/baseline_account_circle_24"
+                app:fab_colorNormal="#FDA085"
+                app:fab_colorPressed="#F6D365"
+                app:fab_colorRipple="@color/black"
+                app:fab_hideAnimation="@anim/fab_scale_down"
+                app:fab_label="Supporter"
+                app:fab_progress="0"
+                app:fab_progress_backgroundColor="#4D000000"
+                app:fab_progress_color="#FF009688"
+                app:fab_progress_indeterminate="false"
+                app:fab_progress_max="100"
+                app:fab_progress_showBackground="true"
+                app:fab_shadowColor="#66000000"
+                app:fab_shadowRadius="10dp"
+                app:fab_shadowXOffset="1dp"
+                app:fab_shadowYOffset="3dp"
+                app:fab_showAnimation="@anim/fab_scale_up"
+                app:fab_showShadow="true"
+                app:fab_size="normal"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/fab_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:src="@drawable/outline_local_phone_24"
+                    app:fab_label="Phone"
+                    app:fab_size="mini" />
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/fab_messager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/messager"
+                    app:fab_label="Messager"
+                    app:fab_size="mini" />
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/fab_gmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/outline_email_24"
+                    app:fab_label="Gmail"
+                    app:fab_size="mini" />
+
+            </com.github.clans.fab.FloatingActionMenu>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/navigationView"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/header_nav"
+            app:menu="@menu/menu_nav_nguoidung"
+            app:itemIconTint="#FF8000"
+            app:itemTextColor="#FF8000">
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

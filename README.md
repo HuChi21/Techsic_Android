@@ -1,4 +1,4 @@
-# Techsic_Android - Graduate Project
+# Techsic_Android
 Created by HuChi
 
 Php & mySQL : 

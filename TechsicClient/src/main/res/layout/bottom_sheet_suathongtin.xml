@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/suathongtin_bottom"
+    android:background="#FFF"
+    android:elevation="20dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|end"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingVertical="5dp"
+            android:layout_marginStart="80dp"
+            android:gravity="center"
+            android:id="@+id/txtTieude"
+            android:hint="Tiêu đề"
+            android:textSize="20dp"
+            android:textColor="@color/techsic"/>
+        <ImageView
+            android:id="@+id/btnClose"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_close_24"
+            app:tint="@color/techsic" />
+
+    </LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:id="@+id/layout_suatt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:id="@+id/txtEmail_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:hint="Email"
+                android:paddingHorizontal="10dp"
+                android:textColor="#121212"
+                android:textSize="18dp"
+
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="#f5f5f5"
+                app:hintEnabled="true"
+                android:hint="Họ tên">
+                <EditText
+                    android:id="@+id/edtHoTen_bottom"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:paddingHorizontal="10dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:lines="1"
+                    android:singleLine="true"  />
+            </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="horizontal">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="#f5f5f5"
+                    android:paddingStart="40dp"
+                    app:hintEnabled="true"
+                    android:hint="Hình ảnh">
+                    <EditText
+                        android:id="@+id/edtHinhanh_bottom"
+                        android:background="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:paddingHorizontal="10dp"
+                        android:clickable="false"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:lines="1"
+                        android:singleLine="true"  />
+                </com.google.android.material.textfield.TextInputLayout>
+                <ImageView
+                    android:id="@+id/imgThemanh"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center|end"
+                    android:src="@drawable/baseline_add_a_photo_24"
+                    app:tint="@color/techsic" />
+            </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="#f5f5f5"
+                app:hintEnabled="true"
+                android:hint="Ngày sinh">
+                <EditText
+                    android:id="@+id/edtNgaySinh_bottom"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:paddingHorizontal="10dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:lines="1"
+                    android:singleLine="true"  />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="#f5f5f5"
+                app:hintEnabled="true"
+                android:hint="Địa chỉ">
+                <EditText
+                    android:id="@+id/edtDiaChi_bottom"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:paddingHorizontal="10dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:lines="1"
+                    android:singleLine="true"  />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="#f5f5f5"
+                app:hintEnabled="true"
+                android:hint="Số điện thoại">
+                <EditText
+                    android:id="@+id/edtSoDT_bottom"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:paddingHorizontal="10dp"
+                    android:inputType="numberDecimal"
+                    android:nextFocusDown="@+id/btnXacNhanDoiTT"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnXacNhanDoiTT"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/border_cardview2"
+                android:text="Xác nhận"
+                android:textAllCaps="false"
+                android:textColor="#FFF"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_doimk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txtEmail_bottom2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:hint="Email"
+                android:paddingHorizontal="10dp"
+                android:textColor="#121212"
+                android:textSize="18dp"
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="#f5f5f5"
+                app:hintEnabled="true"
+                android:hint="Mật khẩu mới">
+                <EditText
+                    android:id="@+id/edtMatkhau_bottom"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:paddingHorizontal="10dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:lines="1"
+                    android:singleLine="true"  />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="#f5f5f5"
+                app:hintEnabled="true"
+                android:hint="Nhập lại mật khẩu mới">
+                <EditText
+                    android:id="@+id/edtConMatkhau_bottom"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:paddingHorizontal="10dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:lines="1"
+                    android:singleLine="true"  />
+            </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/btnXacNhanDoiMK"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/border_cardview2"
+                android:text="Xác nhận"
+                android:textAllCaps="false"
+                android:textColor="#FFF"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

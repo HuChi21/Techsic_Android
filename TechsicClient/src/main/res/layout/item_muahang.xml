@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="10dp"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        >
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.5"
+            android:layout_gravity="center_horizontal"
+            android:paddingHorizontal="5dp"
+            android:id="@+id/itemgh_imgHinhanh"
+            android:src="@drawable/ic_launcher_background"
+            />
+        <TableLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginStart="10dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemgh_txtTensp"
+                android:text="Tên sản phẩm"
+                android:textColor="#121212"
+                android:layout_gravity="center"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:maxLines="2"/>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Thương hiệu"
+                    android:id="@+id/itemgh_txtThuongHieu"
+                    android:gravity="center"
+                    android:textAllCaps="true"
+                    android:background="@drawable/corner_button2"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:hint="Phân loại"
+                    android:gravity="center"
+                    android:textAllCaps="true"
+                    android:id="@+id/itemgh_txtPhanloai"
+                    android:background="@drawable/corner_button2"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/itemgh_txtGia"
+                    android:text="Gia "
+                    android:gravity="center|left"
+                    android:textSize="15dp"
+                    android:textColor="#FF8000"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/itemgh_txtGiaKM"
+                    android:text="KM "
+                    android:textStyle="bold"
+                    android:gravity="center|left"
+                    android:textSize="15dp"
+                    android:textColor="#d3d3d3"
+                    android:layout_marginStart="10dp"
+                    />
+            </TableRow>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:id="@+id/itemgh_txtSoLuong"
+                android:textColor="#121212"
+                android:elevation="8dp"
+                android:textSize="18dp"
+                android:gravity="center|end"
+                android:text="1"
+                />
+
+
+
+        </TableLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

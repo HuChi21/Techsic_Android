@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menuMoinhat"
+        android:title="Home"/>
+    <item
+        android:id="@+id/menuDienthoai"
+        android:icon="@drawable/baseline_phone_android_24"
+        android:title="Điện thoại"/>
+    <item
+        android:id="@+id/menuLaptop"
+        android:icon="@drawable/baseline_laptop_24"
+        android:title="Laptop"/>
+    <item
+        android:id="@+id/menuTablet"
+        android:icon="@drawable/baseline_tablet_mac_24"
+        android:title="Tablet"/>
+    <item
+        android:id="@+id/menuProfile"
+        android:icon="@drawable/baseline_account_circle_24"
+        android:title="User"/>
+</menu>
