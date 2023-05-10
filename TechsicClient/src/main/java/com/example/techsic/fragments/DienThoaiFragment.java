@@ -200,7 +200,7 @@ public class DienThoaiFragment extends Fragment implements OnItemClickListener, 
                 txtGia.getCompoundDrawables()[2].setTint(0xFFD3D3D3);
                 txtLoc.setTextColor(0xFFD3D3D3);
                 txtLoc.getCompoundDrawables()[2].setTint(0xFFD3D3D3);
-                sapxep = "SANPHAM_SOLUONG.sldaban DESC";
+                sapxep = "sanpham_soluong.sldaban DESC";
                 getDienthoaiSapxep("",sapxep);
             }
         });

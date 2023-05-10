@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity  {
                         },
                         throwable -> {
                             Toast.makeText(getApplicationContext(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d("KHongketnoi", String.valueOf(throwable));
                         }
                 ));
     }

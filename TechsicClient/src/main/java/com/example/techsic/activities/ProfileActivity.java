@@ -42,12 +42,9 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
     private Toolbar toolbar;
-    private ImageView imgTimkiem;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private BottomNavigationView bottomNavigationView;
-    private NotificationBadge notifsoluong;
-    private FrameLayout framecart;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     private int count = 0;
     private LinearLayout linearLayout;
@@ -90,44 +87,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         toolbar = (Toolbar) findViewById(R.id.toolBarTrangChu);
         linearLayout = (LinearLayout) findViewById(R.id.layoutSapxep);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        imgTimkiem = (ImageView)findViewById(R.id.imgTimKiem);
-        imgTimkiem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in, R.anim.nothing);
-            }
-        });
+
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
-        notifsoluong = (NotificationBadge) findViewById(R.id.notifSoLuong);
-        framecart = (FrameLayout) findViewById(R.id.frameCart);
         navigationView = (NavigationView)  findViewById(R.id.navigationView);
         drawerLayout = (DrawerLayout)  findViewById(R.id.drawerLayout);
-
-        //khoi tao list
-        if(RetrofitUtilities.giohanglist == null){
-            RetrofitUtilities.giohanglist = new ArrayList<>();
-        }else {
-            int tongItem = 0;
-            for (int i = 0; i < RetrofitUtilities.giohanglist.size(); i++) {
-                tongItem += RetrofitUtilities.giohanglist.get(i).getSoluong();
-            }
-            notifsoluong.setText(String.valueOf(tongItem));
-        }
-        framecart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),GiohangActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in, R.anim.nothing);
-            }
-        });
     }
     private void actionToolBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(R.drawable.baseline_home_24);
+        toolbar.setNavigationIcon(R.drawable.baseline_account_circle_24);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

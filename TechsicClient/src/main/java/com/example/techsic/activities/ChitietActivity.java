@@ -467,7 +467,7 @@ public class ChitietActivity extends AppCompatActivity implements OnItemClickLis
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        startActivity(new Intent(getApplicationContext(),SanphamActivity.class));
         finish();
         overridePendingTransition(R.anim.nothing, R.anim.slide_out);
     }

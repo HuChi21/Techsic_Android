@@ -23,6 +23,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 
 public interface RetrofitInterface {
+//   public static final String BASE_URL="http://192.168.1.37:8080/techsic/" ;
    public static final String BASE_URL="https://techsic.000webhostapp.com/techsic/" ;
     @GET("getloaiSP.php")
     Observable<LoaiSPModel> getloaiSP();

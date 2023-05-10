@@ -141,7 +141,6 @@ public class DangnhapActivity extends AppCompatActivity implements View.OnClickL
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 setDangnhap(email,matkhau);
-                                Toast.makeText(getApplicationContext(), "Khong null", Toast.LENGTH_SHORT).show();
                             }
                             else{
                                 progressBarDangnhap.setVisibility(View.VISIBLE);

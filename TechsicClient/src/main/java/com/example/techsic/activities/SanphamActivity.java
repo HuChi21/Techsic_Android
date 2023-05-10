@@ -141,7 +141,7 @@ public class SanphamActivity extends AppCompatActivity  {
     private void actionToolBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(R.drawable.baseline_home_24);
+        toolbar.setNavigationIcon(R.drawable.baseline_phone_android_24);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
