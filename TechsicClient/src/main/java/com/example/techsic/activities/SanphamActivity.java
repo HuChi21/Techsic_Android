@@ -187,7 +187,6 @@ public class SanphamActivity extends AppCompatActivity  {
             }
         });
         int itemIndex = getIntent().getIntExtra("item_index", 0);
-        Toast.makeText(this, "get current id:"+itemIndex, Toast.LENGTH_SHORT).show();
         viewpager.setCurrentItem(itemIndex); // thiết lập item được chọn cho ViewPager
         sanphamNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -220,10 +219,6 @@ public class SanphamActivity extends AppCompatActivity  {
                     case R.id.menuHome:
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         overridePendingTransition(R.anim.nothing,R.anim.nothing);
-                        break;
-                    case R.id.menuSanpham:
-                        Toast.makeText(getApplicationContext(), "nothing", Toast.LENGTH_SHORT).show();
-
                         break;
                     case R.id.menuProfile:
                         startActivity(new Intent(getApplicationContext(),ProfileActivity.class));

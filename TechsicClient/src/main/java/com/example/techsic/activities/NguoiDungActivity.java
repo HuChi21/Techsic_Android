@@ -356,6 +356,7 @@ public class NguoiDungActivity extends AppCompatActivity implements View.OnClick
                                         layoutDoitt.setVisibility(View.GONE);
                                         layoutDoimk.setVisibility(View.GONE);
                                         bottomSheetBehavior.setState(bottomSheetBehavior.STATE_COLLAPSED);
+                                        Toast.makeText(NguoiDungActivity.this, "Vui lòng đăng nhập lại để cập nhật thông tin!", Toast.LENGTH_SHORT).show();
                                         finish();
                                         overridePendingTransition(0, 0);
                                         startActivity(getIntent());

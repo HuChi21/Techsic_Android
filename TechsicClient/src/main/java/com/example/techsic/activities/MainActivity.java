@@ -190,7 +190,6 @@ public class MainActivity extends AppCompatActivity  {
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(
                                         messageModel -> {
-                                            Log.d("Id va token", RetrofitUtilities.taiKhoanGanDay.getIdtaikhoan()+"  và  "+ s);
                                         },
                                         throwable -> {
                                             Toast.makeText(getApplicationContext(), "Lỗi " + throwable.getMessage(), Toast.LENGTH_SHORT).show();

@@ -157,7 +157,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
+                            android:layout_weight="3"
                             android:id="@+id/txtThuonghieu"
                             android:hint="thuonghieu"
                             android:gravity="start"
@@ -183,8 +183,9 @@
                             />
                         <androidx.recyclerview.widget.RecyclerView
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_weight="7"
+                            android:gravity="center|left"
                             android:id="@+id/phanloaiRecyclerView"
                             android:background="#FFF"
                             android:textSize="15dp"

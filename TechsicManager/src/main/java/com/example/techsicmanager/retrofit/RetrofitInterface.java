@@ -1,7 +1,4 @@
 package com.example.techsicmanager.retrofit;
-//
-//import com.example.techsicmanager.models.DonHangModel;
-//import com.example.techsicmanager.models.SanPhamModel;
 import com.example.techsicmanager.models.DonHangModel;
 import com.example.techsicmanager.models.ItemModel;
 import com.example.techsicmanager.models.MessageModel;
@@ -24,12 +21,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 
 public interface RetrofitInterface {
-//    public static final String BASE_URL="http://192.168.83.183/techsic/" ;
-//   public static final String BASE_URL="http://192.168.22.106:8080/techsic/" ;
-   public static final String BASE_URL="http://204.0.136.75:8080/techsic/" ;
-//   public static final String BASE_URL="https://techsic.000webhostapp.com/techsic/" ;
-//   public static final String BASE_URL="http://192.168.22.105:8080/techsic/" ;
-//   public static final String BASE_URL="http://192.168.1.37:8080/techsic/" ;
+   public static final String BASE_URL="https://techsic.000webhostapp.com/techsic/" ;
 
       @POST("dangnhap.php")
       @FormUrlEncoded

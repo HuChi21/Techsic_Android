@@ -23,13 +23,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 
 public interface RetrofitInterface {
-//   public static final String BASE_URL="http://192.168.83.198/techsic/" ;
-//   public static final String BASE_URL="http://192.168.22.106:8080/techsic/" ;
-     public static final String BASE_URL="http://204.0.136.75:8080/techsic/" ;
-//   public static final String BASE_URL="https://techsic.000webhostapp.com/techsic/" ;
-//   public static final String BASE_URL="http://192.168.22.105:8080/techsic/" ;
-//   public static final String BASE_URL="http://192.168.1.37:8080/techsic/" ;
-
+   public static final String BASE_URL="https://techsic.000webhostapp.com/techsic/" ;
     @GET("getloaiSP.php")
     Observable<LoaiSPModel> getloaiSP();
     @POST("getTintuc.php")
@@ -46,10 +40,16 @@ public interface RetrofitInterface {
     @GET("getSPmoi.php")
     Observable<SanPhamModel> getSPMoi();
 
+    @POST("getThuonghieu.php")
+    @FormUrlEncoded
+    Observable<SanPhamModel> getThuonghieu(
+            @Field("idloaisp") int idloaisp
+    );
     @POST("locSP.php")
     @FormUrlEncoded
     Observable<SanPhamModel> locSP(
             @Field("idloaisp") int idloaisp,
+            @Field("loc") String loc,
             @Field("sapxep") String sapxep
     );
     @POST("getSPtheoloai.php")

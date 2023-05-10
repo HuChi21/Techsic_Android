@@ -163,6 +163,7 @@ public class ChitietActivity extends AppCompatActivity implements OnItemClickLis
         txtThongso.setText(sanPham.getThongso());
         txtMota.setText(sanPham.getMota());
         txtThuonghieu.setText(sanPham.getThuonghieu());
+        //kiểm tra sản phẩm mới nhất
         int spmoi =Cache.getInstance().getData() - 10;
         if(spmoi <= sanPham.getIdsp()){
             imgthumbnail.setVisibility(View.VISIBLE);

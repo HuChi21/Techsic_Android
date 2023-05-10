@@ -1,11 +1,12 @@
 package com.example.techsic.models;
 
+import java.util.List;
+
 public class MessageModel {
     boolean success;
     String message;
     String name;
     int iddonhang;
-
     public int getIddonhang() {
         return iddonhang;
     }

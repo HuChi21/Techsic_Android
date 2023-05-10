@@ -41,7 +41,8 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<PhanLoaiAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         PhanLoai phanLoai = phanLoaiList.get(position);
         holder.txtPhanloai.setText(phanLoai.getPhanloai());
-        holder.txtPhanloai.setTextColor(0xFFD3d3d3);
+        holder.txtPhanloai.setTextColor(0xFF121212);
+        holder.txtPhanloai.setBackgroundColor(0xFFf5f5f5);
         holder.itemView.setBackgroundResource(R.color.selected_item_color);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +51,7 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<PhanLoaiAdapter.MyView
                 if (listener != null) {
                     // Sử dụng holder.getAdapterPosition() để lấy giá trị position mới
                     newPosition = holder.getAdapterPosition();
+                    holder.txtPhanloai.setBackgroundColor(0xFFf5f5f5);
                     // Sử dụng newPosition thay vì position
                     listener.onItemClick(phanLoai.getPhanloai(),newPosition);
                     notifyDataSetChanged();
@@ -59,6 +61,7 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<PhanLoaiAdapter.MyView
         });
         if(newPosition == position){
             holder.txtPhanloai.setTextColor(0xFFFF8800);
+            holder.txtPhanloai.setBackgroundResource(R.drawable.border_cardview4);
         }
     }
     public void getDefaultSelectedItem(OnItemClickListener listener) {
