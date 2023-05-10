@@ -82,14 +82,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             TaiKhoan taiKhoan = Paper.book().read("taikhoan");
             RetrofitUtilities.taiKhoanGanDay = taiKhoan;
         }
-        if(isConnected(this)){
-            actionToolBar();
-        }else{
-            Toast.makeText(getApplicationContext(), "Vui lòng kiểm tra kết nối mạng!", Toast.LENGTH_SHORT).show();
-        }
-
+        actionToolBar();
     }
-
     private void getTokenFirebase(){
         FirebaseMessaging.getInstance().getToken()
                 .addOnSuccessListener(new OnSuccessListener<String>() {
@@ -111,17 +105,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
     }
-
-    private boolean isConnected(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo wifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        NetworkInfo cellular = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        if((wifi != null && wifi.isConnected())||(cellular != null && cellular.isConnected())){
-            return true;
-        }
-        else return false;
-    }
-
     private void getWidget() {
         toolbar = (Toolbar) findViewById(R.id.toolBarTrangChu);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());

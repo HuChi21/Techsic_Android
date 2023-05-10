@@ -22,8 +22,8 @@
                 android:id="@+id/toolBarThongTin"
                 app:title="Điều khoản"
                 android:layout_alignParentTop="true"
-                app:titleTextColor="#FFF"
-                android:background="#FF8000"
+                app:titleTextColor="@color/techsic"
+                android:background="#FFF"
                 />
         <LinearLayout
             android:layout_width="match_parent"

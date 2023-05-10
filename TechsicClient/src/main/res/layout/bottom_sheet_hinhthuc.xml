@@ -23,7 +23,7 @@
             android:layout_marginStart="80dp"
             android:gravity="center"
             android:id="@+id/txtTieude"
-            android:hint="Hình thức thanh toán"
+            android:text="Hình thức thanh toán"
             android:textSize="20dp"
             android:textColor="@color/techsic"/>
         <ImageView

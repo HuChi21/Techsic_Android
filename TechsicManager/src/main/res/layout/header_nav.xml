@@ -9,8 +9,7 @@
         android:id="@+id/imganh"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/ic_launcher_foreground"
-        android:background="@color/techsic"
+        android:src="#f5f5f5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

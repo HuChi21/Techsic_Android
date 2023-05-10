@@ -21,8 +21,8 @@
                 android:id="@+id/toolBarLienHe"
                 app:title="Thông tin liên hệ"
                 android:layout_alignParentTop="true"
-                app:titleTextColor="#FFF"
-                android:background="#FF8000"
+                app:titleTextColor="#FF8000"
+                android:background="#FFF"
                 />
             <ScrollView
                 android:layout_width="match_parent"

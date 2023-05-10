@@ -97,12 +97,9 @@ public class MainActivity extends AppCompatActivity  {
             RetrofitUtilities.taiKhoanGanDay = taiKhoan;
         }
         getTokenFirebase();
-        if(isConnected(this)){
-            getHome();
-            actionViewFlipper();
-        }else{
-            Toast.makeText(getApplicationContext(), "Vui lòng kiểm tra kết nối mạng!", Toast.LENGTH_SHORT).show();
-        }
+        getHome();
+        actionViewFlipper();
+
     }
 
     private void getHome() {
@@ -170,16 +167,7 @@ public class MainActivity extends AppCompatActivity  {
         }
         notifsoluong.setText(String.valueOf(tongItem));
     }
-    private boolean isConnected(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo wifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        NetworkInfo cellular = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        if((wifi != null && wifi.isConnected())||(cellular != null && cellular.isConnected())){
-            return true;
-        }
-        else return false;
-    }
-    private void getTokenFirebase(){
+      private void getTokenFirebase(){
         FirebaseMessaging.getInstance().getToken()
             .addOnSuccessListener(new OnSuccessListener<String>() {
                 @Override
