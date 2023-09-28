@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -104,7 +105,7 @@ public class QuanlySanphamActivity extends AppCompatActivity {
                                     sanphamRecyclerview.setAdapter(sanphamAdapter);
                             }},
                             throwable -> {
-                                Toast.makeText(getApplicationContext(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                         }
                 ));
     }
@@ -140,7 +141,7 @@ public class QuanlySanphamActivity extends AppCompatActivity {
                             }
                         },
                         throwable -> {
-                            Toast.makeText(this, "Lỗi "+ throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                         }
                 ));
     }

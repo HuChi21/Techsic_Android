@@ -269,8 +269,6 @@ public class NguoiDungActivity extends AppCompatActivity implements View.OnClick
                 @Override
                 public void onFailure(Call < MessageModel > call, Throwable t) {
                     Log.d("Call file upload:",t.getMessage());
-                    Toast.makeText(NguoiDungActivity.this,t.getMessage(), Toast.LENGTH_SHORT).show();
-
                 }
             });
         }catch (Exception e){
@@ -376,7 +374,7 @@ public class NguoiDungActivity extends AppCompatActivity implements View.OnClick
                             }
                         },
                         throwable -> {
-                            Toast.makeText(getApplicationContext(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                         }
                 ));
 

@@ -140,7 +140,7 @@ public class ThanhtoanActivity extends AppCompatActivity {
             btnThanhtoan.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getApplicationContext(), "Zalo thì chờ tý", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Đang cập nhật thanh toán qua Zalopay", Toast.LENGTH_SHORT).show();
                     requestPaymentZalopay(number,donHang.getId());
                 }
             });
@@ -219,7 +219,7 @@ public class ThanhtoanActivity extends AppCompatActivity {
                                         }
                                     },
                                     throwable -> {
-                                        Toast.makeText(getApplicationContext(), "Lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                        Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                                     }
                             ));
                     String phoneNumber = data.getStringExtra("phonenumber");
@@ -294,7 +294,7 @@ public class ThanhtoanActivity extends AppCompatActivity {
                                             }
                                         },
                                         throwable -> {
-                                            Toast.makeText(getApplicationContext(), "Lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                                         }
                                 ));
                     }
@@ -341,14 +341,14 @@ public class ThanhtoanActivity extends AppCompatActivity {
                                                     notificationResponse -> {
                                                     },
                                                     throwable -> {
-                                                        Toast.makeText(getApplicationContext(), "Lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                                        Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                                                     }
                                             ));
                                 }
                             }
                         },
                         throwable -> {
-                            Toast.makeText(getApplicationContext(), "Lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                         }
                 ));
     }
@@ -379,14 +379,14 @@ public class ThanhtoanActivity extends AppCompatActivity {
                                                         onBackPressed();
                                                     },
                                                     throwable -> {
-                                                        Toast.makeText(getApplicationContext(), "Lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                                        Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                                                     }
                                             ));
                                 }
                             }
                         },
                         throwable -> {
-                            Toast.makeText(getApplicationContext(), "Lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                         }
                 ));
     }

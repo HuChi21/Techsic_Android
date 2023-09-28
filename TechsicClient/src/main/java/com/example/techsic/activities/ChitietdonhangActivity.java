@@ -113,7 +113,7 @@ public class ChitietdonhangActivity extends AppCompatActivity implements View.On
                 huyDonhang(kieutinhtrang);
                 break;
             case R.id.btnChat:
-                Toast.makeText(this, "Chat thoi nèo", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(),ChatActivity.class));
                 break;
         }
     }
@@ -147,7 +147,7 @@ public class ChitietdonhangActivity extends AppCompatActivity implements View.On
                             donhangRecyclerview.setAdapter(chiTietDonHangAdapter);
                         },
                         throwable -> {
-                            Toast.makeText(this, "Xảy ra lỗi " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d("Error","Xảy ra lỗi " + throwable.getMessage());
                         }
                 ));
 

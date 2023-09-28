@@ -157,7 +157,7 @@ public class XemDonhangActivity extends AppCompatActivity implements View.OnClic
                             donhangRecyclerview.setAdapter(chiTietDonHangAdapter);
                         },
                         throwable -> {
-                            Toast.makeText(this, "Xảy ra lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                         }
                 ));
 
@@ -289,7 +289,7 @@ public class XemDonhangActivity extends AppCompatActivity implements View.OnClic
                             }
                         },
                         throwable -> {
-                            Toast.makeText(getApplicationContext(), "Lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                         }
                 ));
     }

@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -72,7 +72,7 @@ public class XemDonHangActivity extends AppCompatActivity {
                             }
                         },
                         throwable -> {
-                            Toast.makeText(this, "Xảy ra lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                         }
                 ));
     }

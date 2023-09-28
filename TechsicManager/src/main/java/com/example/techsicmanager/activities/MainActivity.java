@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                                 Log.d("Id va token", RetrofitUtilities.taiKhoanGanDay.getIdtaikhoan()+"  và  "+ s);
                                             },
                                             throwable -> {
-                                                Toast.makeText(getApplicationContext(), "Lỗi " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                                Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                                             }
                                     ));
                         }
@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         },
                         throwable -> {
-                            Toast.makeText(getApplicationContext(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                         }
                 ));
     }

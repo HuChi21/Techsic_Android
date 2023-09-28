@@ -227,7 +227,6 @@ public class SuaSanPhamActivity extends AppCompatActivity implements View.OnClic
                 @Override
                 public void onFailure(Call < MessageModel > call, Throwable t) {
                     Log.d("Call file upload:",t.getMessage());
-                    Toast.makeText(SuaSanPhamActivity.this,t.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -330,14 +329,13 @@ public class SuaSanPhamActivity extends AppCompatActivity implements View.OnClic
                                 }
                             },
                             throwable -> {
-                                Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(this, phanloaiJson, Toast.LENGTH_SHORT).show();
+                                Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                             }
                     ));
 
         }
         catch (Exception e){
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.d("Error", "Không kết nối được với server "+e.getMessage());
         }
 
     }
@@ -366,7 +364,7 @@ public class SuaSanPhamActivity extends AppCompatActivity implements View.OnClic
                 }
                 @Override
                 public void onFailure(Call < MessageModel > call, Throwable t) {
-                    Toast.makeText(SuaSanPhamActivity.this,t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.d("Error", "Không kết nối được với server "+t.getMessage());
 
                 }
             });
@@ -410,7 +408,7 @@ public class SuaSanPhamActivity extends AppCompatActivity implements View.OnClic
                                             }
                                         },
                                         throwable -> {
-                                            Toast.makeText(SuaSanPhamActivity.this, "Lỗi "+ throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                                         }
                                 ));
                     }

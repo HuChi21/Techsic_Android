@@ -281,7 +281,7 @@ public class TinhtienActivity extends AppCompatActivity {
                                                                 }
                                                             },
                                                             throwable -> {
-                                                                Toast.makeText(getApplicationContext(), "Lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                                                Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                                                             }
                                                     ));
 
@@ -290,8 +290,7 @@ public class TinhtienActivity extends AppCompatActivity {
 
                                 },
                                 throwable -> {
-                                    Toast.makeText(getApplicationContext(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(getApplicationContext(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                                 }
                         ));
             }
@@ -319,14 +318,14 @@ public class TinhtienActivity extends AppCompatActivity {
                                                     notificationResponse -> {
                                                     },
                                                     throwable -> {
-                                                        Toast.makeText(getApplicationContext(), "Lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                                        Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                                                     }
                                             ));
                                 }
                             }
                         },
                         throwable -> {
-                            Toast.makeText(getApplicationContext(), "Lỗi "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                         }
                 ));
     }

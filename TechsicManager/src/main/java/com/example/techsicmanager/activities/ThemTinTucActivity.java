@@ -157,7 +157,6 @@ public class ThemTinTucActivity extends AppCompatActivity implements View.OnClic
                 @Override
                 public void onFailure(Call < MessageModel > call, Throwable t) {
                     Log.d("Call file upload:",t.getMessage());
-                    Toast.makeText(ThemTinTucActivity.this,t.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -210,7 +209,6 @@ public class ThemTinTucActivity extends AppCompatActivity implements View.OnClic
             noidungTintuc.requestFocus();
             return;
         }
-        Toast.makeText(ThemTinTucActivity.this, "?", Toast.LENGTH_SHORT).show();
         progressBar.setVisibility(View.VISIBLE);
         compositeDisposable.add(apiconfig.themTintuc(tieude,hinhanh,tacgia,thoigian,noidung)
                 .subscribeOn(Schedulers.io())
@@ -232,7 +230,7 @@ public class ThemTinTucActivity extends AppCompatActivity implements View.OnClic
                             }
                         },
                         throwable -> {
-                            Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                         }
                 ));
     }

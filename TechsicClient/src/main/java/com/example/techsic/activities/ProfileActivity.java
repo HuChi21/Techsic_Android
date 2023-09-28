@@ -128,9 +128,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         startActivity(new Intent(getApplicationContext(),SanphamActivity.class));
                         overridePendingTransition(R.anim.nothing,R.anim.nothing);
                         break;
-                    case R.id.menuProfile:
-                        Toast.makeText(getApplicationContext(), "nothing", Toast.LENGTH_SHORT).show();
-                        break;
+
                 }
                 return true;
             }

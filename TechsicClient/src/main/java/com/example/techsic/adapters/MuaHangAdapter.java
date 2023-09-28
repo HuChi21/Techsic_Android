@@ -7,23 +7,15 @@ import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.techsic.R;
-import com.example.techsic.interfaces.ImageClickListener;
 import com.example.techsic.models.GioHang;
-import com.example.techsic.models.eventbus.TinhTongEvent;
-import com.example.techsic.retrofit.RetrofitUtilities;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;

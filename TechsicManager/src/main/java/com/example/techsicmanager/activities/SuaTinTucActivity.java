@@ -180,13 +180,13 @@ public class SuaTinTucActivity extends AppCompatActivity implements View.OnClick
                                 }
                             },
                             throwable -> {
-                                Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                             }
                     ));
 
         }
         catch (Exception e){
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.d("Error", "Không kết nối được với server "+e.getMessage());
         }
 
 
@@ -224,7 +224,7 @@ public class SuaTinTucActivity extends AppCompatActivity implements View.OnClick
                                             }
                                         },
                                         throwable -> {
-                                            Toast.makeText(SuaTinTucActivity.this, "Lỗi "+ throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                                         }
                                 ));
                     }
@@ -268,7 +268,7 @@ public class SuaTinTucActivity extends AppCompatActivity implements View.OnClick
                 }
                 @Override
                 public void onFailure(Call < MessageModel > call, Throwable t) {
-                    Toast.makeText(SuaTinTucActivity.this,t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.d("Error", "Không kết nối được với server "+t.getMessage());
 
                 }
             });
@@ -334,7 +334,6 @@ public class SuaTinTucActivity extends AppCompatActivity implements View.OnClick
                 @Override
                 public void onFailure(Call<MessageModel> call, Throwable t) {
                     Log.d("Call file upload:", t.getMessage());
-                    Toast.makeText(SuaTinTucActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             });

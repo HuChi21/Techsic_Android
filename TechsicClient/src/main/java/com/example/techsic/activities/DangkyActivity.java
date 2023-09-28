@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.View;
@@ -194,7 +195,7 @@ public class DangkyActivity extends AppCompatActivity implements View.OnClickLis
                             }
                         }
                         else{
-                            Toast.makeText(DangkyActivity.this, "Email da ton tai", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DangkyActivity.this, "Email đã tồn tại!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -240,7 +241,7 @@ public class DangkyActivity extends AppCompatActivity implements View.OnClickLis
                             }
                         },
                         throwable -> {
-                            Toast.makeText(getApplicationContext(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.d("Error","Không kết nối được với server "+throwable.getMessage());
                         }
                 ));
 

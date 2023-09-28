@@ -77,7 +77,7 @@
             android:layout_marginVertical="10dp"/>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/recyclerviewTintuc"
             android:layout_margin="10dp"
             >

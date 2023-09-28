@@ -124,8 +124,7 @@ public class MainActivity extends AppCompatActivity  {
                             }
                         },
                         throwable -> {
-                            Toast.makeText(getApplicationContext(), "Không kết nối được với server "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                            Log.d("KHongketnoi", String.valueOf(throwable));
+                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                         }
                 ));
     }
@@ -181,7 +180,7 @@ public class MainActivity extends AppCompatActivity  {
                                         messageModel -> {
                                         },
                                         throwable -> {
-                                            Toast.makeText(getApplicationContext(), "Lỗi " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                            Log.d("Error", "Không kết nối được với server "+throwable.getMessage());
                                         }
                                 ));
                     }
